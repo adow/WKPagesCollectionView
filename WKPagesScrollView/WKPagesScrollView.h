@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WKPagesScrollView.h
 //  WKPagesScrollView
 //
 //  Created by 秦 道平 on 13-11-14.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WKFlipView.h"
 
-@interface ViewController : UIViewController{
+@interface WKPagesScrollView : UICollectionView{
     
 }
 

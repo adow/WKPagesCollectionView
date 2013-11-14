@@ -21,6 +21,9 @@
 		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
 		68D7C1FC18347A08006B418C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1FA18347A08006B418C /* InfoPlist.strings */; };
 		68D7C1FE18347A08006B418C /* WKPagesScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */; };
+		68D7C20918347AC1006B418C /* WKPagesScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C20818347AC1006B418C /* WKPagesScrollView.m */; };
+		68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C20B18349B2A006B418C /* WKFlipView.m */; };
+		68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C20D18349B4C006B418C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		68D7C1F918347A08006B418C /* WKPagesScrollViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesScrollViewTests-Info.plist"; sourceTree = "<group>"; };
 		68D7C1FB18347A08006B418C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPagesScrollViewTests.m; sourceTree = "<group>"; };
+		68D7C20718347AC1006B418C /* WKPagesScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesScrollView.h; sourceTree = "<group>"; };
+		68D7C20818347AC1006B418C /* WKPagesScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesScrollView.m; sourceTree = "<group>"; };
+		68D7C20A18349B2A006B418C /* WKFlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFlipView.h; sourceTree = "<group>"; };
+		68D7C20B18349B2A006B418C /* WKFlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFlipView.m; sourceTree = "<group>"; };
+		68D7C20D18349B4C006B418C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */,
 				68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */,
 				68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */,
 				68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */,
@@ -101,6 +110,7 @@
 		68D7C1D118347A08006B418C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68D7C20D18349B4C006B418C /* QuartzCore.framework */,
 				68D7C1D218347A08006B418C /* Foundation.framework */,
 				68D7C1D418347A08006B418C /* CoreGraphics.framework */,
 				68D7C1D618347A08006B418C /* UIKit.framework */,
@@ -119,6 +129,10 @@
 				68D7C1E818347A08006B418C /* ViewController.m */,
 				68D7C1EA18347A08006B418C /* Images.xcassets */,
 				68D7C1D918347A08006B418C /* Supporting Files */,
+				68D7C20718347AC1006B418C /* WKPagesScrollView.h */,
+				68D7C20818347AC1006B418C /* WKPagesScrollView.m */,
+				68D7C20A18349B2A006B418C /* WKFlipView.h */,
+				68D7C20B18349B2A006B418C /* WKFlipView.m */,
 			);
 			path = WKPagesScrollView;
 			sourceTree = "<group>";
@@ -251,6 +265,8 @@
 			files = (
 				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
+				68D7C20918347AC1006B418C /* WKPagesScrollView.m in Sources */,
+				68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
 				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
@@ -391,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
 				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
