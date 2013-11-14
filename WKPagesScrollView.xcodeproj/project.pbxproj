@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
+		68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D418347A08006B418C /* CoreGraphics.framework */; };
+		68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
+		68D7C1DD18347A08006B418C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1DB18347A08006B418C /* InfoPlist.strings */; };
+		68D7C1DF18347A08006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1DE18347A08006B418C /* main.m */; };
+		68D7C1E318347A08006B418C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1E218347A08006B418C /* AppDelegate.m */; };
+		68D7C1E618347A08006B418C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1E418347A08006B418C /* Main.storyboard */; };
+		68D7C1E918347A08006B418C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1E818347A08006B418C /* ViewController.m */; };
+		68D7C1EB18347A08006B418C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1EA18347A08006B418C /* Images.xcassets */; };
+		68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1F118347A08006B418C /* XCTest.framework */; };
+		68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
+		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
+		68D7C1FC18347A08006B418C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1FA18347A08006B418C /* InfoPlist.strings */; };
+		68D7C1FE18347A08006B418C /* WKPagesScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68D7C1F518347A08006B418C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68D7C1C718347A08006B418C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68D7C1CE18347A08006B418C;
+			remoteInfo = WKPagesScrollView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		68D7C1CF18347A08006B418C /* WKPagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68D7C1D218347A08006B418C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		68D7C1D418347A08006B418C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		68D7C1D618347A08006B418C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		68D7C1DA18347A08006B418C /* WKPagesScrollView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesScrollView-Info.plist"; sourceTree = "<group>"; };
+		68D7C1DC18347A08006B418C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68D7C1DE18347A08006B418C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		68D7C1E018347A08006B418C /* WKPagesScrollView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKPagesScrollView-Prefix.pch"; sourceTree = "<group>"; };
+		68D7C1E118347A08006B418C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		68D7C1E218347A08006B418C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		68D7C1E518347A08006B418C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68D7C1E718347A08006B418C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		68D7C1E818347A08006B418C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		68D7C1EA18347A08006B418C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68D7C1F118347A08006B418C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		68D7C1F918347A08006B418C /* WKPagesScrollViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesScrollViewTests-Info.plist"; sourceTree = "<group>"; };
+		68D7C1FB18347A08006B418C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPagesScrollViewTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68D7C1CC18347A08006B418C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */,
+				68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */,
+				68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68D7C1ED18347A08006B418C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */,
+				68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */,
+				68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68D7C1C618347A08006B418C = {
+			isa = PBXGroup;
+			children = (
+				68D7C1D818347A08006B418C /* WKPagesScrollView */,
+				68D7C1F718347A08006B418C /* WKPagesScrollViewTests */,
+				68D7C1D118347A08006B418C /* Frameworks */,
+				68D7C1D018347A08006B418C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68D7C1D018347A08006B418C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1CF18347A08006B418C /* WKPagesScrollView.app */,
+				68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68D7C1D118347A08006B418C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1D218347A08006B418C /* Foundation.framework */,
+				68D7C1D418347A08006B418C /* CoreGraphics.framework */,
+				68D7C1D618347A08006B418C /* UIKit.framework */,
+				68D7C1F118347A08006B418C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68D7C1D818347A08006B418C /* WKPagesScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1E118347A08006B418C /* AppDelegate.h */,
+				68D7C1E218347A08006B418C /* AppDelegate.m */,
+				68D7C1E418347A08006B418C /* Main.storyboard */,
+				68D7C1E718347A08006B418C /* ViewController.h */,
+				68D7C1E818347A08006B418C /* ViewController.m */,
+				68D7C1EA18347A08006B418C /* Images.xcassets */,
+				68D7C1D918347A08006B418C /* Supporting Files */,
+			);
+			path = WKPagesScrollView;
+			sourceTree = "<group>";
+		};
+		68D7C1D918347A08006B418C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1DA18347A08006B418C /* WKPagesScrollView-Info.plist */,
+				68D7C1DB18347A08006B418C /* InfoPlist.strings */,
+				68D7C1DE18347A08006B418C /* main.m */,
+				68D7C1E018347A08006B418C /* WKPagesScrollView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68D7C1F718347A08006B418C /* WKPagesScrollViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */,
+				68D7C1F818347A08006B418C /* Supporting Files */,
+			);
+			path = WKPagesScrollViewTests;
+			sourceTree = "<group>";
+		};
+		68D7C1F818347A08006B418C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C1F918347A08006B418C /* WKPagesScrollViewTests-Info.plist */,
+				68D7C1FA18347A08006B418C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68D7C1CE18347A08006B418C /* WKPagesScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollView" */;
+			buildPhases = (
+				68D7C1CB18347A08006B418C /* Sources */,
+				68D7C1CC18347A08006B418C /* Frameworks */,
+				68D7C1CD18347A08006B418C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WKPagesScrollView;
+			productName = WKPagesScrollView;
+			productReference = 68D7C1CF18347A08006B418C /* WKPagesScrollView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68D7C1EF18347A08006B418C /* WKPagesScrollViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollViewTests" */;
+			buildPhases = (
+				68D7C1EC18347A08006B418C /* Sources */,
+				68D7C1ED18347A08006B418C /* Frameworks */,
+				68D7C1EE18347A08006B418C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68D7C1F618347A08006B418C /* PBXTargetDependency */,
+			);
+			name = WKPagesScrollViewTests;
+			productName = WKPagesScrollViewTests;
+			productReference = 68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68D7C1C718347A08006B418C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "秦 道平";
+				TargetAttributes = {
+					68D7C1EF18347A08006B418C = {
+						TestTargetID = 68D7C1CE18347A08006B418C;
+					};
+				};
+			};
+			buildConfigurationList = 68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesScrollView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68D7C1C618347A08006B418C;
+			productRefGroup = 68D7C1D018347A08006B418C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68D7C1CE18347A08006B418C /* WKPagesScrollView */,
+				68D7C1EF18347A08006B418C /* WKPagesScrollViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68D7C1CD18347A08006B418C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1EB18347A08006B418C /* Images.xcassets in Resources */,
+				68D7C1DD18347A08006B418C /* InfoPlist.strings in Resources */,
+				68D7C1E618347A08006B418C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68D7C1EE18347A08006B418C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1FC18347A08006B418C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68D7C1CB18347A08006B418C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
+				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
+				68D7C1DF18347A08006B418C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68D7C1EC18347A08006B418C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68D7C1FE18347A08006B418C /* WKPagesScrollViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68D7C1F618347A08006B418C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68D7C1CE18347A08006B418C /* WKPagesScrollView */;
+			targetProxy = 68D7C1F518347A08006B418C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68D7C1DB18347A08006B418C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68D7C1DC18347A08006B418C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		68D7C1E418347A08006B418C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68D7C1E518347A08006B418C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68D7C1FA18347A08006B418C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68D7C1FB18347A08006B418C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68D7C1FF18347A08006B418C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		68D7C20018347A08006B418C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68D7C20218347A08006B418C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
+				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		68D7C20318347A08006B418C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
+				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		68D7C20518347A08006B418C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WKPagesScrollView.app/WKPagesScrollView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		68D7C20618347A08006B418C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WKPagesScrollView.app/WKPagesScrollView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
+				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68D7C1FF18347A08006B418C /* Debug */,
+				68D7C20018347A08006B418C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68D7C20218347A08006B418C /* Debug */,
+				68D7C20318347A08006B418C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68D7C20518347A08006B418C /* Debug */,
+				68D7C20618347A08006B418C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68D7C1C718347A08006B418C /* Project object */;
+}
