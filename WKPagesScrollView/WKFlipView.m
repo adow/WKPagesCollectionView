@@ -26,6 +26,19 @@ CATransform3D WKFlipCATransform3DPerspectSimple(CATransform3D t){
 CATransform3D WKFlipCATransform3DPerspectSimpleWithRotate(CGFloat degree){
     return WKFlipCATransform3DPerspectSimple(CATransform3DMakeRotation((M_PI*degree/180.0f), 1.0, 0.0, 0.0));
 }
+UIImage* makeImageForView(UIView*view){
+    double startTime=CFAbsoluteTimeGetCurrent();
+    if(UIGraphicsBeginImageContextWithOptions != NULL){
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
+    } else {
+        UIGraphicsBeginImageContext(view.frame.size);
+    }
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage* image=UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSLog(@"makeImage duration:%f", CFAbsoluteTimeGetCurrent()-startTime);
+    return image;
+}
 #pragma mark - WKFlipView
 @implementation WKFlipView
 

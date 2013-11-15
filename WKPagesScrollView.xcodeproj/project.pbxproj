@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68B63E581835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */; };
+		68B63E5B1836084300B74C85 /* WKPagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */; };
 		68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D418347A08006B418C /* CoreGraphics.framework */; };
 		68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68B63E561835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewCell.h; sourceTree = "<group>"; };
+		68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewCell.m; sourceTree = "<group>"; };
 		68D7C1CF18347A08006B418C /* WKPagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1D218347A08006B418C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D7C1D418347A08006B418C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +139,10 @@
 				68D7C20818347AC1006B418C /* WKPagesScrollView.m */,
 				68D7C20A18349B2A006B418C /* WKFlipView.h */,
 				68D7C20B18349B2A006B418C /* WKFlipView.m */,
+				68B63E561835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.h */,
+				68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */,
+				68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */,
+				68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */,
 			);
 			path = WKPagesScrollView;
 			sourceTree = "<group>";
@@ -266,8 +276,10 @@
 				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
 				68D7C20918347AC1006B418C /* WKPagesScrollView.m in Sources */,
+				68B63E581835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m in Sources */,
 				68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
+				68B63E5B1836084300B74C85 /* WKPagesCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +490,7 @@
 				68D7C20318347A08006B418C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollViewTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +499,7 @@
 				68D7C20618347A08006B418C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,7 +12,7 @@ CATransform3D WKFlipCATransform3DMakePerspective(CGPoint center, float disZ);
 CATransform3D WKFlipCATransform3DPerspect(CATransform3D t, CGPoint center, float disZ);
 CATransform3D WKFlipCATransform3DPerspectSimple(CATransform3D t);
 CATransform3D WKFlipCATransform3DPerspectSimpleWithRotate(CGFloat degree);
-
+UIImage* makeImageForView(UIView*view);
 #pragma mark - WKFlipView
 @interface WKFlipView : UIView{
     CGFloat _rotate;
