@@ -69,7 +69,7 @@
 }
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 30.0f;
+    return 30;
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* identity=@"cell";
