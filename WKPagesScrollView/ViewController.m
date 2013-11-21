@@ -49,6 +49,7 @@
     flowLayout.scrollDirection=UICollectionViewScrollDirectionVertical;
     
     WKPagesCollectionViewFlowLayout* pageLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
+    WKPagesCollectionSimpleFlowLayout* simpleLayout=[[[WKPagesCollectionSimpleFlowLayout alloc]init] autorelease];
     
     UICollectionView* collectionView=[[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:pageLayout] autorelease];
     collectionView.dataSource=self;
@@ -57,6 +58,43 @@
     [collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:collectionView];
     [pageLayout invalidateLayout];
+    
+//    double delayInSeconds = 5.0f;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        
+//        
+//        [collectionView.visibleCells[1] showToHightlight];
+//        double delayInSeconds = 15.0;
+//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//            [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+//               [collectionView.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+////                   if ([collectionView.visibleCells indexOfObject:cell]==1){
+////                       cell.layer.frame=CGRectMake(0, collectionView.contentOffset.y, collectionView.frame.size.width,collectionView.frame.size.height);
+////                   }
+////                   if ([collectionView.visibleCells indexOfObject:cell]==1){
+////                       NSIndexPath* indexPath=[collectionView indexPathForCell:cell];
+////                       UICollectionViewLayoutAttributes* attributes=[collectionView layoutAttributesForItemAtIndexPath:indexPath];
+////                       cell.layer.transform=attributes.transform3D;
+////                       cell.layer.frame=attributes.frame;
+////                       
+////                   }
+////                   else{
+////                       cell.layer.transform=cell.normalTransform;
+////                   }
+//                   cell.layer.transform=cell.normalTransform;
+////                   if ([collectionView.visibleCells indexOfObject:cell]==1){
+////                       cell.layer.frame=cell.normalFrame;
+////                   }
+//                   
+//                   
+//               }];
+//            } completion:^(BOOL finished) {
+//                
+//            }];
+//        });
+//    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,10 +111,39 @@
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* identity=@"cell";
-    UICollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
+    WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
+    cell.collectionView=collectionView;
     cell.backgroundColor=[UIColor lightGrayColor];
     UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weather-default-bg"]] autorelease];
     [cell.contentView addSubview:imageView];
     return cell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [UIView animateWithDuration:1.0f delay:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [collectionView.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+            NSIndexPath* visibleIndexPath=[collectionView indexPathForCell:cell];
+            if (visibleIndexPath.row==indexPath.row){
+                cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
+            }
+            else if (visibleIndexPath.row<indexPath.row){
+                cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
+            }
+            else if (visibleIndexPath.row>indexPath.row){
+                cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
+            }
+            else{
+                cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+            }
+        }];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1.0f delay:3.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+           [collectionView.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+               cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+           }];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
+    
 }
 @end

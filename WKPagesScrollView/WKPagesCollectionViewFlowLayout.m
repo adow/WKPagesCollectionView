@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 秦 道平. All rights reserved.
 //
 
+
 #import "WKPagesCollectionViewFlowLayout.h"
 #define PageHeight 100.0f
 #define PageWidth 300.0f
@@ -56,7 +57,8 @@
         rect.size.height=self.collectionView.frame.size.height;
         rect.size.width=self.collectionView.frame.size.width;
         rect.origin.x=0.0f;
-        rect.origin.y-=PageHeight;
+        //rect.origin.y-=PageHeight;
+        //rect.origin.y=0.0f;
         attributes.frame=rect;
         
         if (CGRectIntersectsRect(attributes.frame, rect)) {///显示区域内的找出来
