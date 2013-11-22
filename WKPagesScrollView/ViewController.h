@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WKFlipView.h"
+#import "WKPagesScrollView.h"
 #import "WKPagesCollectionViewFlowLayout.h"
-#import "WKPagesCollectionSimpleFlowLayout.h"
 #import "WKPagesCollectionViewCell.h"
 @interface ViewController : UIViewController{
-    
+        
 }
 
 @end

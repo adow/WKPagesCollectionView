@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>{
+    UIButton* _button;
+    WKPagesScrollView* _collectionView;
+}
 
 @end
 
@@ -45,18 +48,25 @@
 //        
 //    }];
     
-    UICollectionViewFlowLayout* flowLayout=[[[UICollectionViewFlowLayout alloc]init] autorelease];
-    flowLayout.scrollDirection=UICollectionViewScrollDirectionVertical;
     
-    WKPagesCollectionViewFlowLayout* pageLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
+//    WKPagesCollectionViewFlowLayout* pageLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
+//    
+//    UICollectionView* collectionView=[[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:pageLayout] autorelease];
+    _collectionView=[[[WKPagesScrollView alloc]initWithPagesFlowLayoutAndFrame:self.view.bounds] autorelease];
+    _collectionView.dataSource=self;
+    _collectionView.delegate=self;
+    [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.view addSubview:_collectionView];
     
-    UICollectionView* collectionView=[[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:pageLayout] autorelease];
-    collectionView.dataSource=self;
-    collectionView.delegate=self;
-    [collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    [self.view addSubview:collectionView];
-    [pageLayout invalidateLayout];
+    _button=[[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _button.frame=CGRectMake(10.0f, 20.0f, 300.0f, 50.0f);
+    _button.backgroundColor=[UIColor lightGrayColor];
+    [_button setTitle:@"dismiss" forState:UIControlStateNormal];
+    [_button addTarget:self action:@selector(onButtonDismiss:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_button];
     
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +75,12 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)dealloc{
+    [_button release];
+    [_collectionView release];
     [super dealloc];
+}
+-(IBAction)onButtonDismiss:(id)sender{
+    [_collectionView dismissFromHightLight];
 }
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -81,31 +96,8 @@
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [UIView animateWithDuration:1.0f delay:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [collectionView.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-            NSIndexPath* visibleIndexPath=[collectionView indexPathForCell:cell];
-            if (visibleIndexPath.row==indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
-            }
-            else if (visibleIndexPath.row<indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
-            }
-            else if (visibleIndexPath.row>indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
-            }
-            else{
-                cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
-            }
-        }];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:1.0f delay:3.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-           [collectionView.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-               cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
-           }];
-        } completion:^(BOOL finished) {
-            
-        }];
-    }];
-    
+
+
+    [(WKPagesScrollView*)collectionView showCellToHighLightAtIndexPath:indexPath];
 }
 @end

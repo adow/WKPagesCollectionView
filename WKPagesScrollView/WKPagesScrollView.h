@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WKPagesCollectionViewFlowLayout.h"
+#import "WKPagesCollectionViewCell.h"
 @interface WKPagesScrollView : UICollectionView{
-    
+    BOOL _isHighLight;
 }
-
+-(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
+-(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath;
+-(void)dismissFromHightLight;
 @end

@@ -24,7 +24,4 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
 @property (nonatomic,assign) WKPagesCollectionViewCellShowingState showingState;
 ///引用collectionView
 @property (nonatomic,assign) UICollectionView* collectionView;
-///作为显示
--(void)showToHightlight;
--(void)backFromHightlight;
 @end
