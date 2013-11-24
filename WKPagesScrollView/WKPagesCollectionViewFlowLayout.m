@@ -51,12 +51,13 @@
     visibleRect.size = self.collectionView.bounds.size;
     //NSLog(@"visibleRect:%@",NSStringFromCGRect(visibleRect));
     for (UICollectionViewLayoutAttributes* attributes in array) {
-        attributes.zIndex=attributes.indexPath.row;
+        attributes.zIndex=attributes.indexPath.row;///要设置zIndex，否则遮挡顺序会有编号
         CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(RotateDegree);
         attributes.transform3D=rotateTransform;
         if (CGRectIntersectsRect(attributes.frame, rect)) {///显示区域内的找出来
             CGFloat distance=attributes.frame.origin.y-self.collectionView.contentOffset.y;
             CGFloat normalizedDistance = distance / self.collectionView.frame.size.height;
+            ///角度大的会和角度小的cell交叉，即使设置zIndex也没有用，这里设置底部的cell角度越来越大
             CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(RotateDegree+15.0f*(normalizedDistance));
             attributes.transform3D=rotateTransform;
         }
