@@ -14,7 +14,6 @@
     WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
     self=[super initWithFrame:frame collectionViewLayout:flowLayout];
     if (self){
-        
     }
     return self;
 }
@@ -60,5 +59,20 @@
         self.scrollEnabled=YES;
         _isHighLight=NO;
     }];
+}
+-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView* view=[super hitTest:point withEvent:event];
+    if (!view){
+        return nil;
+    }
+    for (WKPagesCollectionViewCell* cell in self.visibleCells) {
+        if (cell.showingState==WKPagesCollectionViewCellShowingStateHightlight){
+            return cell.cellContentView;///要把事件传递到这一层才可以
+        }
+    }
+    return view;
+//    UIView* view=[super hitTest:point withEvent:event];
+//    NSLog(@"%@,%d",NSStringFromClass([view class]),view.tag);
+//    return view;
 }
 @end

@@ -52,7 +52,7 @@
 //    WKPagesCollectionViewFlowLayout* pageLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
 //    
 //    UICollectionView* collectionView=[[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:pageLayout] autorelease];
-    _collectionView=[[[WKPagesScrollView alloc]initWithPagesFlowLayoutAndFrame:self.view.bounds] autorelease];
+    _collectionView=[[[WKPagesScrollView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -60,8 +60,9 @@
     
     _button=[[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _button.frame=CGRectMake(10.0f, 20.0f, 300.0f, 50.0f);
-    _button.backgroundColor=[UIColor lightGrayColor];
-    [_button setTitle:@"dismiss" forState:UIControlStateNormal];
+    _button.backgroundColor=[UIColor whiteColor];
+    [_button setTitle:@"cancel" forState:UIControlStateNormal];
+    [_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [_button addTarget:self action:@selector(onButtonDismiss:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_button];
     
@@ -90,14 +91,21 @@
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
-    cell.backgroundColor=[UIColor lightGrayColor];
+    cell.clipsToBounds=NO;
+//    UIScrollView* scrollView=[[[UIScrollView alloc]initWithFrame:self.view.bounds] autorelease];
+//    scrollView.clipsToBounds=NO;
+//    scrollView.backgroundColor=[UIColor clearColor];
+//    scrollView.showsVerticalScrollIndicator=NO;
+//    scrollView.showsHorizontalScrollIndicator=YES;
+//    scrollView.contentSize=CGSizeMake(323, 460);
+//    [cell.contentView addSubview:scrollView];
     UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weather-default-bg"]] autorelease];
-    [cell.contentView addSubview:imageView];
+//    [cell.contentView addSubview:imageView];
+//    [scrollView addSubview:imageView];
+    [cell.cellContentView addSubview:imageView];
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
-
     [(WKPagesScrollView*)collectionView showCellToHighLightAtIndexPath:indexPath];
 }
 @end

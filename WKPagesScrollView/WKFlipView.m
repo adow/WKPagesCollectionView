@@ -21,7 +21,7 @@ CATransform3D WKFlipCATransform3DPerspect(CATransform3D t, CGPoint center, float
     return CATransform3DConcat(t, WKFlipCATransform3DMakePerspective(center, disZ));
 }
 CATransform3D WKFlipCATransform3DPerspectSimple(CATransform3D t){
-    return WKFlipCATransform3DPerspect(t, CGPointMake(0, 0), 1000);
+    return WKFlipCATransform3DPerspect(t, CGPointMake(0, 0), 1500);
 }
 CATransform3D WKFlipCATransform3DPerspectSimpleWithRotate(CGFloat degree){
     return WKFlipCATransform3DPerspectSimple(CATransform3DMakeRotation((M_PI*degree/180.0f), 1.0, 0.0, 0.0));

@@ -9,9 +9,8 @@
 
 #import "WKPagesCollectionViewFlowLayout.h"
 #define PageHeight 100.0f
-#define PageWidth 300.0f
 #define LineSpacing 0.0f
-#define RotateDegree -50.0f
+#define RotateDegree -60.0f
 @implementation WKPagesCollectionViewFlowLayout{
     
 }
@@ -25,7 +24,7 @@
 -(void)prepareLayout
 {
     [super prepareLayout];
-    self.itemSize=CGSizeMake(PageWidth,PageHeight);
+    self.itemSize=CGSizeMake(self.collectionView.frame.size.width,PageHeight);
     self.minimumLineSpacing=LineSpacing;
     self.scrollDirection=UICollectionViewScrollDirectionVertical;
 }
@@ -52,19 +51,13 @@
     visibleRect.size = self.collectionView.bounds.size;
     //NSLog(@"visibleRect:%@",NSStringFromCGRect(visibleRect));
     for (UICollectionViewLayoutAttributes* attributes in array) {
-        
-        CGRect rect=attributes.frame;
-        rect.size.height=self.collectionView.frame.size.height;
-        rect.size.width=self.collectionView.frame.size.width;
-        rect.origin.x=0.0f;
-        //rect.origin.y-=PageHeight;
-        //rect.origin.y=0.0f;
-        attributes.frame=rect;
-        
+        attributes.zIndex=attributes.indexPath.row;
+        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(RotateDegree);
+        attributes.transform3D=rotateTransform;
         if (CGRectIntersectsRect(attributes.frame, rect)) {///显示区域内的找出来
-            CGFloat distance = CGRectGetMidY(visibleRect) - attributes.center.y; ///计算和屏幕中心的距离
-            CGFloat normalizedDistance = fabsf(distance) / CGRectGetMidY(self.collectionView.frame);
-            CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(RotateDegree+15.0f*(1-normalizedDistance));
+            CGFloat distance=attributes.frame.origin.y-self.collectionView.contentOffset.y;
+            CGFloat normalizedDistance = distance / self.collectionView.frame.size.height;
+            CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(RotateDegree+15.0f*(normalizedDistance));
             attributes.transform3D=rotateTransform;
         }
         else{

@@ -15,6 +15,8 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
 } WKPagesCollectionViewCellShowingState;
 @interface WKPagesCollectionViewCell : UICollectionViewCell{
     WKPagesCollectionViewCellShowingState _showingState;
+    UITapGestureRecognizer* _tapGesture;
+    UIScrollView* _scrollView;
 }
 ///正常状态下的位置
 @property (nonatomic,assign) CATransform3D normalTransform;
@@ -24,4 +26,5 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
 @property (nonatomic,assign) WKPagesCollectionViewCellShowingState showingState;
 ///引用collectionView
 @property (nonatomic,assign) UICollectionView* collectionView;
+@property (nonatomic,retain) UIView* cellContentView;
 @end
