@@ -18,19 +18,23 @@
         self.clipsToBounds=NO;
         self.backgroundColor=[UIColor clearColor];
         self.contentView.tag=100;
-        CGRect rect=CGRectMake(0.0f, 0.0f, 320, 460);
+        CGRect rect=CGRectMake(0.0f, 0.0f,
+                               [UIScreen mainScreen].bounds.size.width,
+                               [UIScreen mainScreen].bounds.size.height);
         if (!_scrollView){
             _scrollView=[[UIScrollView alloc]initWithFrame:rect];
+            _scrollView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
             _scrollView.clipsToBounds=NO;
             _scrollView.backgroundColor=[UIColor clearColor];
             _scrollView.showsVerticalScrollIndicator=NO;
             _scrollView.showsHorizontalScrollIndicator=YES;
-            _scrollView.contentSize=CGSizeMake(rect.size.width+1, rect.size.height);
+            _scrollView.contentSize=CGSizeMake(_scrollView.frame.size.width+1, _scrollView.frame.size.height);
             [self.contentView addSubview:_scrollView];
             _scrollView.tag=101;
         }
         if (!_cellContentView){
             _cellContentView=[[UIView alloc]initWithFrame:rect];
+            _cellContentView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
             [_scrollView addSubview:_cellContentView];
             _cellContentView.tag=102;
         }

@@ -29,7 +29,8 @@
     self.scrollDirection=UICollectionViewScrollDirectionVertical;
 }
 -(CGSize)collectionViewContentSize{
-    return CGSizeMake(self.collectionView.frame.size.width, (PageHeight+LineSpacing)*([self.collectionView numberOfItemsInSection:0]+3));
+    return CGSizeMake(self.collectionView.frame.size.width,
+                      (PageHeight+LineSpacing)*([self.collectionView numberOfItemsInSection:0]+3));
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)oldBounds
