@@ -10,6 +10,7 @@
 		68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */; };
 		68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */; };
 		68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */; };
+		68BDCE801843387F00DB81A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 68BDCE7F1843387F00DB81A2 /* README.md */; };
 		68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D418347A08006B418C /* CoreGraphics.framework */; };
 		68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
@@ -44,6 +45,7 @@
 		68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewCell.m; sourceTree = "<group>"; };
 		68BDCE7A18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		68BDCE7F1843387F00DB81A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1D218347A08006B418C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D7C1D418347A08006B418C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +95,7 @@
 		68BDCE7418432CCA00DB81A2 /* WKPagesCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				68BDCE7F1843387F00DB81A2 /* README.md */,
 				68BDCE7518432CCA00DB81A2 /* WK.h */,
 				68BDCE7618432CCA00DB81A2 /* WKPagesCollectionView.h */,
 				68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */,
@@ -241,6 +244,7 @@
 			files = (
 				68D7C1EB18347A08006B418C /* Images.xcassets in Resources */,
 				68D7C1DD18347A08006B418C /* InfoPlist.strings in Resources */,
+				68BDCE801843387F00DB81A2 /* README.md in Resources */,
 				68D7C1E618347A08006B418C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

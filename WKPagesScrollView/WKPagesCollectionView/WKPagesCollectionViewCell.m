@@ -84,7 +84,7 @@
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
             self.normalTransform=self.layer.transform;///先记录原来的位置
-            //_scrollView.scrollEnabled=NO;
+            _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             CGFloat lineSpacing=pageHeight-160;
             CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row;

@@ -52,6 +52,9 @@
 -(IBAction)onButtonDismiss:(id)sender{
     [_collectionView dismissFromHightLight];
 }
+-(IBAction)onButtonTitle:(id)sender{
+    NSLog(@"button");
+}
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 30;
@@ -61,8 +64,17 @@
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
     cell.clipsToBounds=NO;
-    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weather-default-bg"]] autorelease];
+//    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"image-%d",indexPath.row]]] autorelease];
+    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]] autorelease];
+    imageView.frame=self.view.bounds;
     [cell.cellContentView addSubview:imageView];
+    UIButton* button=[UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame=CGRectMake(0, (indexPath.row+1)*10+100, 320, 50.0f);
+    button.backgroundColor=[UIColor whiteColor];
+    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [button setTitle:[NSString stringWithFormat:@"button %d",indexPath.row] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(onButtonTitle:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.cellContentView addSubview:button];
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

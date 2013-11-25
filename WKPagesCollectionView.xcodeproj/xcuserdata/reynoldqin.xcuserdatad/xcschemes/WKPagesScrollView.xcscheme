@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68D7C1CE18347A08006B418C"
-               BuildableName = "WKPagesScrollView.app"
+               BuildableName = "WKPagesCollectionView.app"
                BlueprintName = "WKPagesCollectionView"
                ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68D7C1EF18347A08006B418C"
-               BuildableName = "WKPagesScrollViewTests.xctest"
+               BuildableName = "WKPagesCollectionViewTests.xctest"
                BlueprintName = "WKPagesCollectionViewTests"
                ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
-            BuildableName = "WKPagesScrollView.app"
+            BuildableName = "WKPagesCollectionView.app"
             BlueprintName = "WKPagesCollectionView"
             ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
-            BuildableName = "WKPagesScrollView.app"
+            BuildableName = "WKPagesCollectionView.app"
             BlueprintName = "WKPagesCollectionView"
             ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
-            BuildableName = "WKPagesScrollView.app"
+            BuildableName = "WKPagesCollectionView.app"
             BlueprintName = "WKPagesCollectionView"
             ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>

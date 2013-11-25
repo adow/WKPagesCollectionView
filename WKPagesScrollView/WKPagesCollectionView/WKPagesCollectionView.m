@@ -69,9 +69,11 @@
     if (!view){
         return nil;
     }
-    for (WKPagesCollectionViewCell* cell in self.visibleCells) {
-        if (cell.showingState==WKPagesCollectionViewCellShowingStateHightlight){
-            return cell.cellContentView;///要把事件传递到这一层才可以
+    if (view==self){
+        for (WKPagesCollectionViewCell* cell in self.visibleCells) {
+            if (cell.showingState==WKPagesCollectionViewCellShowingStateHightlight){
+                return cell.cellContentView;///要把事件传递到这一层才可以
+            }
         }
     }
     return view;
