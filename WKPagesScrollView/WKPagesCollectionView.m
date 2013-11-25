@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 秦 道平. All rights reserved.
 //
 
-#import "WKPagesScrollView.h"
-@implementation WKPagesScrollView
+#import "WKPagesCollectionView.h"
+@implementation WKPagesCollectionView
 
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame{
     WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];

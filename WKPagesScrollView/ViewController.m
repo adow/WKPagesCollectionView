@@ -10,7 +10,7 @@
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>{
     UIButton* _button;
-    WKPagesScrollView* _collectionView;
+    WKPagesCollectionView* _collectionView;
 }
 
 @end
@@ -21,38 +21,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    WKFlipView* flipView=[[[WKFlipView alloc]initWithFrame:self.view.bounds] autorelease];
-//    flipView.backgroundColor=[UIColor lightTextColor];
-//    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weather-default-bg"]] autorelease];
-//    imageView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    [flipView addSubview:imageView];
-//    [self.view addSubview:flipView];
-//    
-//    UIView* secondView=[[[UIView alloc]initWithFrame:self.view.bounds] autorelease];
-//    secondView.backgroundColor=[UIColor darkGrayColor];
-//    [self.view addSubview:secondView];
-//    
-//    UIImageView* thirdView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-1107"]] autorelease];
-//    thirdView.frame=self.view.bounds;
-//    [self.view addSubview:thirdView];
-//    
-//    [UIView animateWithDuration:0.3f delay:2.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-//        CATransform3D flipTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-30.0f);
-//        flipView.layer.transform=CATransform3DConcat(flipTransform, CATransform3DMakeTranslation(0.0f, -60.0f, 0.0f));
-//        
-//        secondView.layer.transform=flipTransform;
-//        
-//        thirdView.layer.transform=CATransform3DConcat(flipTransform, CATransform3DMakeTranslation(0.0f, 60.0f, 0.0f));
-//        
-//    } completion:^(BOOL finished) {
-//        
-//    }];
-    
-    
-//    WKPagesCollectionViewFlowLayout* pageLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
-//    
-//    UICollectionView* collectionView=[[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:pageLayout] autorelease];
-    _collectionView=[[[WKPagesScrollView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
+    _collectionView=[[[WKPagesCollectionView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -92,20 +61,11 @@
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
     cell.clipsToBounds=NO;
-//    UIScrollView* scrollView=[[[UIScrollView alloc]initWithFrame:self.view.bounds] autorelease];
-//    scrollView.clipsToBounds=NO;
-//    scrollView.backgroundColor=[UIColor clearColor];
-//    scrollView.showsVerticalScrollIndicator=NO;
-//    scrollView.showsHorizontalScrollIndicator=YES;
-//    scrollView.contentSize=CGSizeMake(323, 460);
-//    [cell.contentView addSubview:scrollView];
     UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weather-default-bg"]] autorelease];
-//    [cell.contentView addSubview:imageView];
-//    [scrollView addSubview:imageView];
     [cell.cellContentView addSubview:imageView];
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [(WKPagesScrollView*)collectionView showCellToHighLightAtIndexPath:indexPath];
+    [(WKPagesCollectionView*)collectionView showCellToHighLightAtIndexPath:indexPath];
 }
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WKPagesCollectionViewFlowLayout.h"
 #import "WKPagesCollectionViewCell.h"
-@interface WKPagesScrollView : UICollectionView{
+@interface WKPagesCollectionView : UICollectionView{
     BOOL _isHighLight;
 }
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
