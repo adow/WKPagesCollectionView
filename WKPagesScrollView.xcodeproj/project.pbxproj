@@ -43,6 +43,7 @@
 		68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewCell.h; sourceTree = "<group>"; };
 		68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewCell.m; sourceTree = "<group>"; };
+		68BDCE73184327B300DB81A2 /* WK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK.h; sourceTree = "<group>"; };
 		68D7C1CF18347A08006B418C /* WKPagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1D218347A08006B418C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D7C1D418347A08006B418C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +144,7 @@
 				68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */,
 				68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */,
 				68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */,
+				68BDCE73184327B300DB81A2 /* WK.h */,
 			);
 			path = WKPagesScrollView;
 			sourceTree = "<group>";
