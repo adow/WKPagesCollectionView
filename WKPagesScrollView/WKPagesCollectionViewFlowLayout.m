@@ -31,8 +31,9 @@
     return [UIScreen mainScreen].bounds.size.height;
 }
 -(CGSize)collectionViewContentSize{
-    return CGSizeMake(self.collectionView.frame.size.width,
-                      (self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+1));
+    CGFloat contentHeight=(self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+1);
+    contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height+111);
+    return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)oldBounds

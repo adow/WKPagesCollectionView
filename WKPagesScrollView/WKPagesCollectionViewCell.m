@@ -80,12 +80,12 @@
     if (_showingState==showingState)
         return;
     _showingState=showingState;
+     CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
             self.normalTransform=self.layer.transform;///先记录原来的位置
             //_scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
             CGFloat lineSpacing=pageHeight-160;
             CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row;
             //NSLog(@"moveY:%f, contentOffsetY:%f",moveY,self.collectionView.contentOffset.y);
@@ -96,14 +96,14 @@
         case WKPagesCollectionViewCellShowingStateBackToTop:{
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -460.0f, 0);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight, 0);
             self.layer.transform=CATransform3DConcat(self.normalTransform, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, 460.0f, 0);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
             break;
