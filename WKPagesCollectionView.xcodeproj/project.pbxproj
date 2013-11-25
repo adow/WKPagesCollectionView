@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68B63E581835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */; };
-		68B63E5B1836084300B74C85 /* WKPagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */; };
+		68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */; };
+		68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */; };
+		68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */; };
 		68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D418347A08006B418C /* CoreGraphics.framework */; };
 		68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
@@ -21,9 +22,6 @@
 		68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1F118347A08006B418C /* XCTest.framework */; };
 		68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
-		68D7C1FC18347A08006B418C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1FA18347A08006B418C /* InfoPlist.strings */; };
-		68D7C1FE18347A08006B418C /* WKPagesScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */; };
-		68D7C20918347AC1006B418C /* WKPagesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C20818347AC1006B418C /* WKPagesCollectionView.m */; };
 		68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C20B18349B2A006B418C /* WKFlipView.m */; };
 		68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C20D18349B4C006B418C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -39,32 +37,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		68B63E561835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewCell.h; sourceTree = "<group>"; };
-		68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewCell.m; sourceTree = "<group>"; };
-		68BDCE73184327B300DB81A2 /* WK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK.h; sourceTree = "<group>"; };
-		68D7C1CF18347A08006B418C /* WKPagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68BDCE7518432CCA00DB81A2 /* WK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK.h; sourceTree = "<group>"; };
+		68BDCE7618432CCA00DB81A2 /* WKPagesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionView.h; sourceTree = "<group>"; };
+		68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionView.m; sourceTree = "<group>"; };
+		68BDCE7818432CCA00DB81A2 /* WKPagesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewCell.h; sourceTree = "<group>"; };
+		68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewCell.m; sourceTree = "<group>"; };
+		68BDCE7A18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPagesCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1D218347A08006B418C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D7C1D418347A08006B418C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		68D7C1D618347A08006B418C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		68D7C1DA18347A08006B418C /* WKPagesScrollView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesScrollView-Info.plist"; sourceTree = "<group>"; };
+		68D7C1DA18347A08006B418C /* WKPagesCollectionView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesCollectionView-Info.plist"; sourceTree = "<group>"; };
 		68D7C1DC18347A08006B418C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68D7C1DE18347A08006B418C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		68D7C1E018347A08006B418C /* WKPagesScrollView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKPagesScrollView-Prefix.pch"; sourceTree = "<group>"; };
+		68D7C1E018347A08006B418C /* WKPagesCollectionView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKPagesCollectionView-Prefix.pch"; sourceTree = "<group>"; };
 		68D7C1E118347A08006B418C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68D7C1E218347A08006B418C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		68D7C1E518347A08006B418C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68D7C1E718347A08006B418C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		68D7C1E818347A08006B418C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		68D7C1EA18347A08006B418C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1F118347A08006B418C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		68D7C1F918347A08006B418C /* WKPagesScrollViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WKPagesScrollViewTests-Info.plist"; sourceTree = "<group>"; };
-		68D7C1FB18347A08006B418C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPagesScrollViewTests.m; sourceTree = "<group>"; };
-		68D7C20718347AC1006B418C /* WKPagesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionView.h; sourceTree = "<group>"; };
-		68D7C20818347AC1006B418C /* WKPagesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPagesCollectionView.m; sourceTree = "<group>"; };
 		68D7C20A18349B2A006B418C /* WKFlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFlipView.h; sourceTree = "<group>"; };
 		68D7C20B18349B2A006B418C /* WKFlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFlipView.m; sourceTree = "<group>"; };
 		68D7C20D18349B4C006B418C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -95,11 +90,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68BDCE7418432CCA00DB81A2 /* WKPagesCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				68BDCE7518432CCA00DB81A2 /* WK.h */,
+				68BDCE7618432CCA00DB81A2 /* WKPagesCollectionView.h */,
+				68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */,
+				68BDCE7818432CCA00DB81A2 /* WKPagesCollectionViewCell.h */,
+				68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */,
+				68BDCE7A18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.h */,
+				68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */,
+			);
+			path = WKPagesCollectionView;
+			sourceTree = "<group>";
+		};
 		68D7C1C618347A08006B418C = {
 			isa = PBXGroup;
 			children = (
-				68D7C1D818347A08006B418C /* WKPagesScrollView */,
-				68D7C1F718347A08006B418C /* WKPagesScrollViewTests */,
+				68D7C1D818347A08006B418C /* WKPagesCollectionView */,
 				68D7C1D118347A08006B418C /* Frameworks */,
 				68D7C1D018347A08006B418C /* Products */,
 			);
@@ -108,8 +116,8 @@
 		68D7C1D018347A08006B418C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68D7C1CF18347A08006B418C /* WKPagesScrollView.app */,
-				68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */,
+				68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */,
+				68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +134,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		68D7C1D818347A08006B418C /* WKPagesScrollView */ = {
+		68D7C1D818347A08006B418C /* WKPagesCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				68D7C1E118347A08006B418C /* AppDelegate.h */,
@@ -136,44 +144,21 @@
 				68D7C1E818347A08006B418C /* ViewController.m */,
 				68D7C1EA18347A08006B418C /* Images.xcassets */,
 				68D7C1D918347A08006B418C /* Supporting Files */,
-				68D7C20718347AC1006B418C /* WKPagesCollectionView.h */,
-				68D7C20818347AC1006B418C /* WKPagesCollectionView.m */,
+				68BDCE7418432CCA00DB81A2 /* WKPagesCollectionView */,
 				68D7C20A18349B2A006B418C /* WKFlipView.h */,
 				68D7C20B18349B2A006B418C /* WKFlipView.m */,
-				68B63E561835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.h */,
-				68B63E571835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m */,
-				68B63E591836084300B74C85 /* WKPagesCollectionViewCell.h */,
-				68B63E5A1836084300B74C85 /* WKPagesCollectionViewCell.m */,
-				68BDCE73184327B300DB81A2 /* WK.h */,
 			);
+			name = WKPagesCollectionView;
 			path = WKPagesScrollView;
 			sourceTree = "<group>";
 		};
 		68D7C1D918347A08006B418C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				68D7C1DA18347A08006B418C /* WKPagesScrollView-Info.plist */,
+				68D7C1DA18347A08006B418C /* WKPagesCollectionView-Info.plist */,
 				68D7C1DB18347A08006B418C /* InfoPlist.strings */,
 				68D7C1DE18347A08006B418C /* main.m */,
-				68D7C1E018347A08006B418C /* WKPagesScrollView-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		68D7C1F718347A08006B418C /* WKPagesScrollViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				68D7C1FD18347A08006B418C /* WKPagesScrollViewTests.m */,
-				68D7C1F818347A08006B418C /* Supporting Files */,
-			);
-			path = WKPagesScrollViewTests;
-			sourceTree = "<group>";
-		};
-		68D7C1F818347A08006B418C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				68D7C1F918347A08006B418C /* WKPagesScrollViewTests-Info.plist */,
-				68D7C1FA18347A08006B418C /* InfoPlist.strings */,
+				68D7C1E018347A08006B418C /* WKPagesCollectionView-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,9 +166,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		68D7C1CE18347A08006B418C /* WKPagesScrollView */ = {
+		68D7C1CE18347A08006B418C /* WKPagesCollectionView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollView" */;
+			buildConfigurationList = 68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionView" */;
 			buildPhases = (
 				68D7C1CB18347A08006B418C /* Sources */,
 				68D7C1CC18347A08006B418C /* Frameworks */,
@@ -193,14 +178,14 @@
 			);
 			dependencies = (
 			);
-			name = WKPagesScrollView;
+			name = WKPagesCollectionView;
 			productName = WKPagesScrollView;
-			productReference = 68D7C1CF18347A08006B418C /* WKPagesScrollView.app */;
+			productReference = 68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */;
 			productType = "com.apple.product-type.application";
 		};
-		68D7C1EF18347A08006B418C /* WKPagesScrollViewTests */ = {
+		68D7C1EF18347A08006B418C /* WKPagesCollectionViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollViewTests" */;
+			buildConfigurationList = 68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionViewTests" */;
 			buildPhases = (
 				68D7C1EC18347A08006B418C /* Sources */,
 				68D7C1ED18347A08006B418C /* Frameworks */,
@@ -211,9 +196,9 @@
 			dependencies = (
 				68D7C1F618347A08006B418C /* PBXTargetDependency */,
 			);
-			name = WKPagesScrollViewTests;
+			name = WKPagesCollectionViewTests;
 			productName = WKPagesScrollViewTests;
-			productReference = 68D7C1F018347A08006B418C /* WKPagesScrollViewTests.xctest */;
+			productReference = 68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +215,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesScrollView" */;
+			buildConfigurationList = 68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesCollectionView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -243,8 +228,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				68D7C1CE18347A08006B418C /* WKPagesScrollView */,
-				68D7C1EF18347A08006B418C /* WKPagesScrollViewTests */,
+				68D7C1CE18347A08006B418C /* WKPagesCollectionView */,
+				68D7C1EF18347A08006B418C /* WKPagesCollectionViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -264,7 +249,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68D7C1FC18347A08006B418C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,11 +261,11 @@
 			files = (
 				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
-				68D7C20918347AC1006B418C /* WKPagesCollectionView.m in Sources */,
-				68B63E581835C41D00B74C85 /* WKPagesCollectionViewFlowLayout.m in Sources */,
 				68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */,
+				68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
-				68B63E5B1836084300B74C85 /* WKPagesCollectionViewCell.m in Sources */,
+				68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */,
+				68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +273,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68D7C1FE18347A08006B418C /* WKPagesScrollViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +281,7 @@
 /* Begin PBXTargetDependency section */
 		68D7C1F618347A08006B418C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 68D7C1CE18347A08006B418C /* WKPagesScrollView */;
+			target = 68D7C1CE18347A08006B418C /* WKPagesCollectionView */;
 			targetProxy = 68D7C1F518347A08006B418C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -318,14 +301,6 @@
 				68D7C1E518347A08006B418C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		68D7C1FA18347A08006B418C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				68D7C1FB18347A08006B418C /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -410,9 +385,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
-				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "WKPagesScrollView/WKPagesCollectionView-Info.plist";
+				PRODUCT_NAME = WKPagesCollectionView;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -424,9 +399,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
-				INFOPLIST_FILE = "WKPagesScrollView/WKPagesScrollView-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "WKPagesScrollView/WKPagesCollectionView-Info.plist";
+				PRODUCT_NAME = WKPagesCollectionView;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -448,7 +423,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WKPagesCollectionViewTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -467,7 +442,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
 				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WKPagesCollectionViewTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -476,7 +451,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesScrollView" */ = {
+		68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68D7C1FF18347A08006B418C /* Debug */,
@@ -485,7 +460,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollView" */ = {
+		68D7C20118347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68D7C20218347A08006B418C /* Debug */,
@@ -494,7 +469,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesScrollViewTests" */ = {
+		68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68D7C20518347A08006B418C /* Debug */,

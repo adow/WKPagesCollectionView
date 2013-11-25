@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68D7C1CE18347A08006B418C"
                BuildableName = "WKPagesScrollView.app"
-               BlueprintName = "WKPagesScrollView"
-               ReferencedContainer = "container:WKPagesScrollView.xcodeproj">
+               BlueprintName = "WKPagesCollectionView"
+               ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68D7C1EF18347A08006B418C"
                BuildableName = "WKPagesScrollViewTests.xctest"
-               BlueprintName = "WKPagesScrollViewTests"
-               ReferencedContainer = "container:WKPagesScrollView.xcodeproj">
+               BlueprintName = "WKPagesCollectionViewTests"
+               ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
             BuildableName = "WKPagesScrollView.app"
-            BlueprintName = "WKPagesScrollView"
-            ReferencedContainer = "container:WKPagesScrollView.xcodeproj">
+            BlueprintName = "WKPagesCollectionView"
+            ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
             BuildableName = "WKPagesScrollView.app"
-            BlueprintName = "WKPagesScrollView"
-            ReferencedContainer = "container:WKPagesScrollView.xcodeproj">
+            BlueprintName = "WKPagesCollectionView"
+            ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68D7C1CE18347A08006B418C"
             BuildableName = "WKPagesScrollView.app"
-            BlueprintName = "WKPagesScrollView"
-            ReferencedContainer = "container:WKPagesScrollView.xcodeproj">
+            BlueprintName = "WKPagesCollectionView"
+            ReferencedContainer = "container:WKPagesCollectionView.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
