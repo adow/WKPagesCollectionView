@@ -85,7 +85,9 @@
             self.normalTransform=self.layer.transform;///先记录原来的位置
             //_scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            CGFloat moveY=self.collectionView.contentOffset.y-100*indexPath.row;
+            CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
+            CGFloat lineSpacing=pageHeight-160;
+            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row;
             //NSLog(@"moveY:%f, contentOffsetY:%f",moveY,self.collectionView.contentOffset.y);
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
             self.layer.transform=moveTransform;

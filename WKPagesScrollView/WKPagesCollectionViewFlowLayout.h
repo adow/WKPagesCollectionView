@@ -11,5 +11,5 @@
 @interface WKPagesCollectionViewFlowLayout : UICollectionViewFlowLayout{
     
 }
-
+@property (nonatomic,readonly) CGFloat pageHeight;
 @end

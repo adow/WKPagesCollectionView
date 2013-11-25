@@ -13,6 +13,7 @@
     WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
     self=[super initWithFrame:frame collectionViewLayout:flowLayout];
     if (self){
+        self.contentInset=UIEdgeInsetsMake(-100.0f, 0.0f, 0.0f, 0.0f);
     }
     return self;
 }
@@ -58,6 +59,10 @@
         self.scrollEnabled=YES;
         _isHighLight=NO;
     }];
+}
+-(void)reloadData{
+    [super reloadData];
+    
 }
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView* view=[super hitTest:point withEvent:event];

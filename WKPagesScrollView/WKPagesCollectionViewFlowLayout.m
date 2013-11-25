@@ -8,8 +8,6 @@
 
 
 #import "WKPagesCollectionViewFlowLayout.h"
-#define PageHeight 100.0f
-#define LineSpacing 0.0f
 #define RotateDegree -60.0f
 @implementation WKPagesCollectionViewFlowLayout{
     
@@ -24,13 +22,17 @@
 -(void)prepareLayout
 {
     [super prepareLayout];
-    self.itemSize=CGSizeMake(self.collectionView.frame.size.width,PageHeight);
-    self.minimumLineSpacing=LineSpacing;
+    self.itemSize=CGSizeMake(self.collectionView.frame.size.width,self.pageHeight);
+    self.minimumLineSpacing=-1*(self.itemSize.height-160.0f);
+    //NSLog(@"lineSpacing:%f",self.minimumLineSpacing);
     self.scrollDirection=UICollectionViewScrollDirectionVertical;
+}
+-(CGFloat)pageHeight{
+    return [UIScreen mainScreen].bounds.size.height;
 }
 -(CGSize)collectionViewContentSize{
     return CGSizeMake(self.collectionView.frame.size.width,
-                      (PageHeight+LineSpacing)*([self.collectionView numberOfItemsInSection:0]+3));
+                      (self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+1));
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)oldBounds
