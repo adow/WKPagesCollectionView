@@ -60,6 +60,7 @@
     return 30;
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    NSLog(@"cellForItemAtIndexPath:%d",indexPath.row);
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
@@ -78,6 +79,7 @@
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"select an item at row%d",indexPath.row);
     [(WKPagesCollectionView*)collectionView showCellToHighLightAtIndexPath:indexPath];
 }
 @end

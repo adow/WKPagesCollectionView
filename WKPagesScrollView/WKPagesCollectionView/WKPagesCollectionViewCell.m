@@ -72,7 +72,7 @@
 }
 -(IBAction)onTapGesture:(UITapGestureRecognizer*)tapGesture{
     NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-    NSLog(@"row:%d",indexPath.row);
+//    NSLog(@"row:%d",indexPath.row);
     [self.collectionView.delegate collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 }
 #pragma mark - Properties
