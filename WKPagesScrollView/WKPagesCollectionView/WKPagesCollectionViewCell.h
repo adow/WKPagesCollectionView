@@ -13,7 +13,11 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
     WKPagesCollectionViewCellShowingStateBackToTop=2,
     WKPagesCollectionViewCellShowingStateBackToBottom=3,
 } WKPagesCollectionViewCellShowingState;
-@interface WKPagesCollectionViewCell : UICollectionViewCell{
+@protocol WKPagesCollectionViewCellDelegate <NSObject>
+///触发删除内容
+-(void)removeCellAtIndexPath:(NSIndexPath*)indexPath;
+@end
+@interface WKPagesCollectionViewCell : UICollectionViewCell<UIScrollViewDelegate>{
     WKPagesCollectionViewCellShowingState _showingState;
     UITapGestureRecognizer* _tapGesture;
     UIScrollView* _scrollView;
@@ -27,4 +31,5 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
 ///引用collectionView
 @property (nonatomic,assign) UICollectionView* collectionView;
 @property (nonatomic,retain) UIView* cellContentView;
+@property (nonatomic,assign) id<WKPagesCollectionViewCellDelegate> cellDelegate;
 @end

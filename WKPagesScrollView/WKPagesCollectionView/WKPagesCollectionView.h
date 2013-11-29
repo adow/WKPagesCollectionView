@@ -12,6 +12,8 @@
 @interface WKPagesCollectionView : UICollectionView{
     BOOL _isHighLight;
 }
+///是否可以删除
+@property (nonatomic,assign) BOOL canRemove;
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath;
 -(void)dismissFromHightLight;

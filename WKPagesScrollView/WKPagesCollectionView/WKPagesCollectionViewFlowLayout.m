@@ -9,6 +9,10 @@
 
 #import "WKPagesCollectionViewFlowLayout.h"
 #define RotateDegree -60.0f
+@interface WKPagesCollectionViewFlowLayout()
+@property (nonatomic,retain) NSMutableArray* deleteIndexPaths;
+@property (nonatomic,retain) NSMutableArray* insertIndexPaths;
+@end
 @implementation WKPagesCollectionViewFlowLayout{
     
 }
@@ -31,7 +35,7 @@
     return [UIScreen mainScreen].bounds.size.height;
 }
 -(CGSize)collectionViewContentSize{
-    CGFloat contentHeight=(self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+1);
+    CGFloat contentHeight=(self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+3);
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height+111);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
@@ -71,5 +75,49 @@
         }
     }
     return array;
+}
+#pragma mark Collection Update
+-(void)prepareForCollectionViewUpdates:(NSArray *)updateItems{
+    [super prepareForCollectionViewUpdates:updateItems];
+    self.deleteIndexPaths=[NSMutableArray array];
+    self.insertIndexPaths=[NSMutableArray array];
+    for (UICollectionViewUpdateItem* updateItem in updateItems) {
+        if (updateItem.updateAction==UICollectionUpdateActionDelete){
+            [self.deleteIndexPaths addObject:updateItem.indexPathBeforeUpdate];
+        }
+        if (updateItem.updateAction==UICollectionUpdateActionInsert){
+            [self.insertIndexPaths addObject:updateItem.indexPathAfterUpdate];
+        }
+    }
+}
+-(void)finalizeCollectionViewUpdates{
+    [super finalizeCollectionViewUpdates];
+    self.deleteIndexPaths=nil;
+    self.insertIndexPaths=nil;
+}
+-(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
+    UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+    if ([self.insertIndexPaths containsObject:itemIndexPath]){
+        NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
+        if (!attributes)
+            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
+        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-90.0f);
+        attributes.transform3D=rotateTransform;
+    }
+    
+    return attributes;
+}
+-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
+    UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
+    if ([self.deleteIndexPaths containsObject:itemIndexPath]){
+        NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
+        if (!attributes){
+            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
+        }
+        CATransform3D moveTransform=CATransform3DMakeTranslation(-320.0f, 0.0f, 0.0f);
+        attributes.transform3D=CATransform3DConcat(attributes.transform3D, moveTransform);
+        attributes.alpha=0.0f;
+    }
+    return attributes;
 }
 @end

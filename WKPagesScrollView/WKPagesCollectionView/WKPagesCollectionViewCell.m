@@ -29,6 +29,7 @@
             _scrollView.showsVerticalScrollIndicator=NO;
             _scrollView.showsHorizontalScrollIndicator=YES;
             _scrollView.contentSize=CGSizeMake(_scrollView.frame.size.width+1, _scrollView.frame.size.height);
+            _scrollView.delegate=self;
             [self.contentView addSubview:_scrollView];
             _scrollView.tag=101;
         }
@@ -121,6 +122,23 @@
 }
 -(WKPagesCollectionViewCellShowingState)showingState{
     return _showingState;
+}
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (self.showingState==WKPagesCollectionViewCellShowingStateNormal){
+        if (scrollView.contentOffset.x>=90.0f){
+            NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
+            NSLog(@"delete cell at %d",indexPath.row);
+            self.alpha=0.0f;
+            [self.cellDelegate removeCellAtIndexPath:indexPath];
+        }
+    }
 }
 
 @end
