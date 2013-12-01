@@ -135,7 +135,7 @@
         if (scrollView.contentOffset.x>=90.0f){
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             NSLog(@"delete cell at %d",indexPath.row);
-            self.alpha=0.0f;
+            //self.alpha=0.0f;
             [self.cellDelegate removeCellAtIndexPath:indexPath];
         }
     }

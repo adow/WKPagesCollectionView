@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _array=[[NSMutableArray alloc]init];
-    for (int a=0; a<30; a++) {
+    for (int a=0; a<9; a++) {
         [_array addObject:[NSString stringWithFormat:@"button %d",a]];
     }
     _collectionView=[[[WKPagesCollectionView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
@@ -38,8 +38,7 @@
     [_button setTitle:@"cancel" forState:UIControlStateNormal];
     [_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [_button addTarget:self action:@selector(onButtonDismiss:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_button];
-    
+    //[self.view addSubview:_button];
     
     UIButton* addButton=[UIButton buttonWithType:UIButtonTypeCustom];
     addButton.frame=CGRectMake(10.0f, 80.0f, 300.0f, 50.0f);
@@ -47,7 +46,7 @@
     [addButton setTitle:@"add" forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onButtonAdd:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addButton];
+    //[self.view addSubview:addButton];
     
 }
 
@@ -70,14 +69,17 @@
 }
 -(IBAction)onButtonAdd:(id)sender{
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_array.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
-    double delayInSeconds = 1.0f;
+    double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [_array insertObject:@"new button" atIndex:_array.count];
+        int lastRow=_array.count;
+        NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
+        [_array insertObject:@"new button" atIndex:lastRow];
         [_collectionView performBatchUpdates:^{
-            [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_array.count-1 inSection:0]]];
+            [_collectionView insertItemsAtIndexPaths:@[insertIndexPath]];
         } completion:^(BOOL finished) {
-            [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_array.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+            [_collectionView scrollToItemAtIndexPath:insertIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+            //[_collectionView reloadData];
         }];
     });
     
@@ -112,12 +114,10 @@
 }
 #pragma mark - WKPagesCollectionViewCellDelegate
 -(void)removeCellAtIndexPath:(NSIndexPath *)indexPath{
-    _collectionView.userInteractionEnabled=NO;
     [_array removeObjectAtIndex:indexPath.row];
     [_collectionView performBatchUpdates:^{
         [_collectionView deleteItemsAtIndexPaths:@[indexPath,]];
     } completion:^(BOOL finished) {
-        _collectionView.userInteractionEnabled=YES;
     }];
 }
 @end

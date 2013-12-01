@@ -13,7 +13,7 @@
 static inline CATransform3D WKFlipCATransform3DMakePerspective(CGPoint center, float disZ)
 {
     CATransform3D transToCenter = CATransform3DMakeTranslation(-center.x, -center.y, -300.0f);
-    CATransform3D transBack = CATransform3DMakeTranslation(center.x, center.y, 0);
+    CATransform3D transBack = CATransform3DMakeTranslation(center.x, center.y, 300.0f);
     CATransform3D scale = CATransform3DIdentity;
     scale.m34 = -1.0f/disZ;
     return CATransform3DConcat(CATransform3DConcat(transToCenter, scale), transBack);
@@ -23,7 +23,7 @@ static inline CATransform3D WKFlipCATransform3DPerspect(CATransform3D t, CGPoint
     return CATransform3DConcat(t, WKFlipCATransform3DMakePerspective(center, disZ));
 }
 static inline CATransform3D WKFlipCATransform3DPerspectSimple(CATransform3D t){
-    return WKFlipCATransform3DPerspect(t, CGPointMake(0, 0), 1500);
+    return WKFlipCATransform3DPerspect(t, CGPointMake(0, 0), 1500.0f);
 }
 static inline CATransform3D WKFlipCATransform3DPerspectSimpleWithRotate(CGFloat degree){
     return WKFlipCATransform3DPerspectSimple(CATransform3DMakeRotation((M_PI*degree/180.0f), 1.0, 0.0, 0.0));
