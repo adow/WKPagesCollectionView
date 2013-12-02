@@ -47,7 +47,7 @@
 {
     NSLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
     UICollectionViewLayoutAttributes* attributes=[super layoutAttributesForItemAtIndexPath:path];
-    [self makeRotateTransformForAttributes2:attributes];
+    [self makeRotateTransformForAttributes:attributes];
     return attributes;
 }
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
@@ -55,7 +55,7 @@
     NSLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     for (UICollectionViewLayoutAttributes* attributes in array) {
-        [self makeRotateTransformForAttributes2:attributes];
+        [self makeRotateTransformForAttributes:attributes];
     }
     return array;
 }
@@ -100,7 +100,7 @@
 //        }
 //        CATransform3D moveTransform=CATransform3DMakeTranslation(-320.0f, 0.0f, 0.0f);
 //        attributes.transform3D=CATransform3DConcat(attributes.transform3D, moveTransform);
-//    }
+//    }    
 //    return attributes;
 //    
 //}

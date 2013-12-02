@@ -66,6 +66,7 @@
 }
 -(IBAction)onButtonTitle:(id)sender{
     NSLog(@"button");
+    [_collectionView dismissFromHightLight];
 }
 -(IBAction)onButtonAdd:(id)sender{
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_array.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
