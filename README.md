@@ -85,6 +85,6 @@
 
 我发现如果我的cell的翻转角度如果是全部固定的，那在删除cell时是不会发生奇怪的动画的，我的makeRotateTransformForAttributes2中是指定了一个固定的角度。
 
-** Fixed ** 
+###Fixed###
 
 终于知道问题在哪里了，只是由于contentSize计算错误导致内容区域不够所以在删除cell后又自动滚动时产生了奇怪的行为，所以`-(CGSize)collectionViewContentSize`中的高度一定要正确
