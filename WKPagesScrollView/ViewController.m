@@ -46,7 +46,7 @@
     [addButton setTitle:@"add" forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onButtonAdd:) forControlEvents:UIControlEventTouchUpInside];
-    //[self.view addSubview:addButton];
+    [self.view addSubview:addButton];
     
 }
 

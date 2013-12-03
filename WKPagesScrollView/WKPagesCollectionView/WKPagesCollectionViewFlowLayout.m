@@ -34,8 +34,8 @@
     return [UIScreen mainScreen].bounds.size.height;
 }
 -(CGSize)collectionViewContentSize{
-    CGFloat contentHeight=(self.pageHeight+self.minimumLineSpacing)*([self.collectionView numberOfItemsInSection:0]+1.5);
-    contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height+111);
+    CGFloat contentHeight=160.0f*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight;
+    contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
 
@@ -80,30 +80,30 @@
     self.deleteIndexPaths=nil;
     self.insertIndexPaths=nil;
 }
-//-(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-//    UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-//    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
-//    if ([self.insertIndexPaths containsObject:itemIndexPath]){
-//        if (!attributes)
-//            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
-//        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-90.0f);
-//        attributes.transform3D=rotateTransform;
-//    }
-//    return attributes;
-//}
-//-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-//    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
-//    UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
-//    if ([self.deleteIndexPaths containsObject:itemIndexPath]){
-//        if (!attributes){
-//            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
-//        }
-//        CATransform3D moveTransform=CATransform3DMakeTranslation(-320.0f, 0.0f, 0.0f);
-//        attributes.transform3D=CATransform3DConcat(attributes.transform3D, moveTransform);
-//    }    
-//    return attributes;
-//    
-//}
+-(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
+    UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
+    if ([self.insertIndexPaths containsObject:itemIndexPath]){
+        if (!attributes)
+            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
+        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-90.0f);
+        attributes.transform3D=rotateTransform;
+    }
+    return attributes;
+}
+-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
+    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
+    UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
+    if ([self.deleteIndexPaths containsObject:itemIndexPath]){
+        if (!attributes){
+            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
+        }
+        CATransform3D moveTransform=CATransform3DMakeTranslation(-320.0f, 0.0f, 0.0f);
+        attributes.transform3D=CATransform3DConcat(attributes.transform3D, moveTransform);
+    }    
+    return attributes;
+    
+}
 ///为attribute设置新的角度
 -(void)makeRotateTransformForAttributes:(UICollectionViewLayoutAttributes*)attributes{
     attributes.zIndex=attributes.indexPath.row;///要设置zIndex，否则遮挡顺序会有编号
