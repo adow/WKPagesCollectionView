@@ -11,10 +11,15 @@
 #import "WKPagesCollectionViewCell.h"
 @interface WKPagesCollectionView : UICollectionView{
     BOOL _isHighLight;
+    UIImageView* _maskImageView;
+    BOOL _maskShow;
 }
 ///是否可以删除
 @property (nonatomic,assign) BOOL canRemove;
+@property (nonatomic,assign) BOOL maskShow;
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
+-(UIImage*)makeGradientImage;
+#pragma mark - Action
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath;
 -(void)dismissFromHightLight;
 @end

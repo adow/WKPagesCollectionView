@@ -40,14 +40,6 @@
             _cellContentView.tag=102;
         }
 
-//        _maskLayer=[[CAGradientLayer layer]retain];
-//        _maskLayer.frame=self.bounds;
-//        _maskLayer.colors=@[(id)[UIColor colorWithRed:255/255.0f green:255.0f/255.0f blue:255/255.0f alpha:1.0f].CGColor,
-//                   (id)[UIColor colorWithRed:255/255.0f green:255.0f/255.0f blue:255/255.0f alpha:0.0f].CGColor];
-//        _maskLayer.startPoint=CGPointMake(0.5, 0.3f);
-//        _maskLayer.endPoint=CGPointMake(0.5f, 1.0f);
-//        _maskLayer.locations=@[@0.0f,@1.0f];
-//        self.layer.mask=_maskLayer;
         _maskImageView=[[UIImageView alloc]initWithImage:[self makeGradientImage]];
         [self addSubview:_maskImageView];
         

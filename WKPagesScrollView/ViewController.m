@@ -31,6 +31,7 @@
     _collectionView.delegate=self;
     [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:_collectionView];
+    _collectionView.maskShow=YES;
     
     _button=[[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _button.frame=CGRectMake(10.0f, 20.0f, 300.0f, 50.0f);
