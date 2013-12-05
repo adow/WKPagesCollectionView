@@ -39,6 +39,18 @@
             [_scrollView addSubview:_cellContentView];
             _cellContentView.tag=102;
         }
+
+//        _maskLayer=[[CAGradientLayer layer]retain];
+//        _maskLayer.frame=self.bounds;
+//        _maskLayer.colors=@[(id)[UIColor colorWithRed:255/255.0f green:255.0f/255.0f blue:255/255.0f alpha:1.0f].CGColor,
+//                   (id)[UIColor colorWithRed:255/255.0f green:255.0f/255.0f blue:255/255.0f alpha:0.0f].CGColor];
+//        _maskLayer.startPoint=CGPointMake(0.5, 0.3f);
+//        _maskLayer.endPoint=CGPointMake(0.5f, 1.0f);
+//        _maskLayer.locations=@[@0.0f,@1.0f];
+//        self.layer.mask=_maskLayer;
+        _maskImageView=[[UIImageView alloc]initWithImage:[self makeGradientImage]];
+        [self addSubview:_maskImageView];
+        
         if (!_tapGesture){
             _tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapGesture:)];
             [_scrollView addGestureRecognizer:_tapGesture];
@@ -59,6 +71,7 @@
     [_tapGesture release];
     [_cellContentView release];
     [_scrollView release];
+    [_maskImageView release];
     [super dealloc];
 }
 -(void)prepareForReuse{
@@ -84,6 +97,7 @@
      CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
+            _maskImageView.hidden=YES;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
@@ -95,6 +109,7 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToTop:{
+            _maskImageView.hidden=NO;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight, 0);
@@ -102,6 +117,7 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
+            _maskImageView.hidden=NO;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight, 0);
@@ -109,6 +125,7 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateNormal:{
+            _maskImageView.hidden=NO;
             self.layer.transform=self.normalTransform;
             _scrollView.scrollEnabled=YES;
         }
@@ -140,5 +157,28 @@
         }
     }
 }
-
+#pragma mark - Image
+-(UIImage*)makeGradientImage{
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 1.0f);
+    CGContextRef context=UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    CGGradientRef myGradient;
+    CGColorSpaceRef myColorspace;
+    size_t num_locations = 2;
+    CGFloat locations[2] = { 0.0, 1.0 };
+    CGFloat components[8] = { 0.0,0.0,0.0, 0.0,  // Start color
+        0.0,0.0,0.0,1.0}; // End color
+    myColorspace = CGColorSpaceCreateDeviceRGB();
+    myGradient = CGGradientCreateWithColorComponents (myColorspace, components,
+                                                      locations, num_locations);
+    CGContextDrawLinearGradient(context, myGradient, CGPointMake(self.bounds.size.width/2, 100.0f), CGPointMake(self.bounds.size.width/2, self.bounds.size.height-100.0f), kCGGradientDrawsAfterEndLocation);
+    
+    UIImage* image=UIGraphicsGetImageFromCurrentImageContext();
+    CGContextRestoreGState(context);
+    CGColorSpaceRelease(myColorspace);
+    CGGradientRelease(myGradient);
+    UIGraphicsEndImageContext();
+    return image;
+}
 @end

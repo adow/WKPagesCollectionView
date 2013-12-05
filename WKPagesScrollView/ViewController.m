@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _array=[[NSMutableArray alloc]init];
-    for (int a=0; a<9; a++) {
+    for (int a=0; a<=30; a++) {
         [_array addObject:[NSString stringWithFormat:@"button %d",a]];
     }
     _collectionView=[[[WKPagesCollectionView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
