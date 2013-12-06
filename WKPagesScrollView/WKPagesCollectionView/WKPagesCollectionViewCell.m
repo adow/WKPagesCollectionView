@@ -40,9 +40,6 @@
             _cellContentView.tag=102;
         }
 
-        _maskImageView=[[UIImageView alloc]initWithImage:[self makeGradientImage]];
-        [self addSubview:_maskImageView];
-        
         if (!_tapGesture){
             _tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapGesture:)];
             [_scrollView addGestureRecognizer:_tapGesture];
@@ -63,7 +60,6 @@
     [_tapGesture release];
     [_cellContentView release];
     [_scrollView release];
-    [_maskImageView release];
     [super dealloc];
 }
 -(void)prepareForReuse{
@@ -89,7 +85,6 @@
      CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
-            _maskImageView.hidden=YES;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
@@ -101,7 +96,6 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToTop:{
-            _maskImageView.hidden=NO;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight, 0);
@@ -109,7 +103,6 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
-            _maskImageView.hidden=NO;
             self.normalTransform=self.layer.transform;///先记录原来的位置
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight, 0);
@@ -117,7 +110,6 @@
         }
             break;
         case WKPagesCollectionViewCellShowingStateNormal:{
-            _maskImageView.hidden=NO;
             self.layer.transform=self.normalTransform;
             _scrollView.scrollEnabled=YES;
         }

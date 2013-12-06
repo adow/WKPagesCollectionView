@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,WKPagesCollectionViewCellDelegate>{
-    UIButton* _button;
     WKPagesCollectionView* _collectionView;
     NSMutableArray* _array;
 }
@@ -33,22 +32,19 @@
     [self.view addSubview:_collectionView];
     _collectionView.maskShow=YES;
     
-    _button=[[UIButton buttonWithType:UIButtonTypeCustom] retain];
-    _button.frame=CGRectMake(10.0f, 20.0f, 300.0f, 50.0f);
-    _button.backgroundColor=[UIColor whiteColor];
-    [_button setTitle:@"cancel" forState:UIControlStateNormal];
-    [_button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_button addTarget:self action:@selector(onButtonDismiss:) forControlEvents:UIControlEventTouchUpInside];
-    //[self.view addSubview:_button];
     
-    UIButton* addButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    addButton.frame=CGRectMake(10.0f, 80.0f, 300.0f, 50.0f);
-    addButton.backgroundColor=[UIColor whiteColor];
-    [addButton setTitle:@"add" forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(onButtonAdd:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addButton];
+    UIToolbar* toolBar=[[[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height-50.0f, self.view.frame.size.width, 50.0f)] autorelease];
+    toolBar.barStyle=UIBarStyleBlackTranslucent;
+    toolBar.translucent=YES;
+    toolBar.tintColor=[UIColor whiteColor];
+    [self.view addSubview:toolBar];
     
+    
+    UIBarButtonItem* addButtonItem=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onButtonAdd:)] autorelease];
+    toolBar.items=@[
+                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],
+                    addButtonItem,
+                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +54,6 @@
 }
 -(void)dealloc{
     [_array release];
-    [_button release];
     [_collectionView release];
     [super dealloc];
 }
