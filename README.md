@@ -7,8 +7,9 @@
 * 往左划动会删除这个cell;
 * 可以在底部添加新的cell;
 
-![最终效果](http://farm4.staticflickr.com/3829/11171831814_9c5972bbe6_z.jpg)
+下面链接是实现的效果视频:
 
+[![效果视频](http://farm4.staticflickr.com/3829/11171831814_9c5972bbe6_z.jpg)](http://v.youku.com/v_show/id_XNjQ0NzM3Nzky.html)
 
 
 ##实现滚动

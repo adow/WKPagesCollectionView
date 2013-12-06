@@ -110,7 +110,7 @@
     CGFloat distance=attributes.frame.origin.y-self.collectionView.contentOffset.y;
     CGFloat normalizedDistance = distance / self.collectionView.frame.size.height;
     normalizedDistance=fmaxf(normalizedDistance, 0.0f);
-    CGFloat rotate=RotateDegree+15.0f*normalizedDistance;
+    CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
     //CGFloat rotate=RotateDegree;
     NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
           attributes.indexPath.row,normalizedDistance,rotate);

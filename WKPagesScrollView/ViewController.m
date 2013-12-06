@@ -58,13 +58,27 @@
     [super dealloc];
 }
 -(IBAction)onButtonDismiss:(id)sender{
-    [_collectionView dismissFromHightLight];
+    [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
+        NSLog(@"dismiss completed");
+    }];
 }
 -(IBAction)onButtonTitle:(id)sender{
     NSLog(@"button");
-    [_collectionView dismissFromHightLight];
+    [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
+        NSLog(@"dismiss completed");
+    }];
 }
 -(IBAction)onButtonAdd:(id)sender{
+    if (_collectionView.isHighLight){
+        [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
+            [self _addNewPage];
+        }];
+    }
+    else{
+        [self _addNewPage];
+    }
+}
+-(void)_addNewPage{
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_array.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -76,10 +90,8 @@
             [_collectionView insertItemsAtIndexPaths:@[insertIndexPath]];
         } completion:^(BOOL finished) {
             [_collectionView scrollToItemAtIndexPath:insertIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
-            //[_collectionView reloadData];
         }];
     });
-    
 }
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -107,7 +119,9 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"select an item at row %d",indexPath.row);
-    [(WKPagesCollectionView*)collectionView showCellToHighLightAtIndexPath:indexPath];
+    [(WKPagesCollectionView*)collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
+        NSLog(@"highlight completed");
+    }];
 }
 #pragma mark - WKPagesCollectionViewCellDelegate
 -(void)removeCellAtIndexPath:(NSIndexPath *)indexPath{

@@ -68,7 +68,7 @@
     return image;
 }
 #pragma mark - Actions
--(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
+-(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
     if (_isHighLight){
         return;
     }
@@ -92,10 +92,11 @@
         }];
     } completion:^(BOOL finished) {
         _isHighLight=YES;
+        completion(finished);
     }];
 }
 ///回到原来的状态
--(void)dismissFromHightLight{
+-(void)dismissFromHightLightWithCompletion:(void (^)(BOOL))completion{
     self.maskShow=YES;
     if (!_isHighLight)
         return;
@@ -106,6 +107,7 @@
     } completion:^(BOOL finished) {
         self.scrollEnabled=YES;
         _isHighLight=NO;
+        completion(finished);
     }];
 }
 #pragma mark - UIView and UICollectionView
