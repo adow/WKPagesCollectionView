@@ -57,11 +57,6 @@
     [_collectionView release];
     [super dealloc];
 }
--(IBAction)onButtonDismiss:(id)sender{
-    [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
-        NSLog(@"dismiss completed");
-    }];
-}
 -(IBAction)onButtonTitle:(id)sender{
     NSLog(@"button");
     [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
@@ -102,9 +97,8 @@
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
-    cell.clipsToBounds=NO;
+    //cell.clipsToBounds=NO;
     cell.cellDelegate=self;
-//    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"image-%d",indexPath.row]]] autorelease];
     UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]] autorelease];
     imageView.frame=self.view.bounds;
     [cell.cellContentView addSubview:imageView];
