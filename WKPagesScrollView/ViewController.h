@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WKFlipView.h"
 #import "WKPagesCollectionView.h"
 @interface ViewController : UIViewController{
         

@@ -23,7 +23,6 @@
 		68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1F118347A08006B418C /* XCTest.framework */; };
 		68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
-		68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C20B18349B2A006B418C /* WKFlipView.m */; };
 		68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C20D18349B4C006B418C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +61,6 @@
 		68D7C1EA18347A08006B418C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1F118347A08006B418C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		68D7C20A18349B2A006B418C /* WKFlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKFlipView.h; sourceTree = "<group>"; };
-		68D7C20B18349B2A006B418C /* WKFlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKFlipView.m; sourceTree = "<group>"; };
 		68D7C20D18349B4C006B418C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -148,8 +145,6 @@
 				68D7C1EA18347A08006B418C /* Images.xcassets */,
 				68D7C1D918347A08006B418C /* Supporting Files */,
 				68BDCE7418432CCA00DB81A2 /* WKPagesCollectionView */,
-				68D7C20A18349B2A006B418C /* WKFlipView.h */,
-				68D7C20B18349B2A006B418C /* WKFlipView.m */,
 			);
 			name = WKPagesCollectionView;
 			path = WKPagesScrollView;
@@ -265,7 +260,6 @@
 			files = (
 				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
-				68D7C20C18349B2A006B418C /* WKFlipView.m in Sources */,
 				68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
 				68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */,

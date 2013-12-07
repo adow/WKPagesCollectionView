@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WKFlipView.h"
+#import "WK.h"
 @interface WKPagesCollectionViewFlowLayout : UICollectionViewFlowLayout{
     
 }
