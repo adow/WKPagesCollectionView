@@ -21,6 +21,7 @@
     [_maskImageView release];
     [super dealloc];
 }
+#pragma mark - Mask
 -(void)setMaskShow:(BOOL)maskShow{
     _maskShow=maskShow;
     if (maskShow){
@@ -64,10 +65,10 @@
     CGColorSpaceRelease(myColorspace);
     CGGradientRelease(myGradient);
     UIGraphicsEndImageContext();
-    NSLog(@"image size:%@",NSStringFromCGSize(image.size));
     return image;
 }
 #pragma mark - Actions
+///显示状态
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
     if (_isHighLight){
         return;
@@ -110,11 +111,44 @@
         completion(finished);
     }];
 }
-#pragma mark - UIView and UICollectionView
--(void)reloadData{
-    [super reloadData];
-    
+///追加一个页面
+-(void)appendItem{
+    if (self.isHighLight){
+        [self dismissFromHightLightWithCompletion:^(BOOL finished) {
+            [self _addNewPage];
+        }];
+    }
+    else{
+        [self _addNewPage];
+    }
 }
+///添加一页
+-(void)_addNewPage{
+    int total=[self numberOfItemsInSection:0];
+    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    double delayInSeconds = 0.3f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        ///添加数据
+        [(id<WKPagesCollectionViewDataSource>)self.dataSource willAppendItemInCollectionView:self];
+        int lastRow=total;
+        NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
+        [self performBatchUpdates:^{
+            [self insertItemsAtIndexPaths:@[insertIndexPath]];
+        } completion:^(BOOL finished) {
+            double delayInSeconds = 0.3f;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self showCellToHighLightAtIndexPath:insertIndexPath completion:^(BOOL finished) {
+                    
+                }];
+            });
+            
+        }];
+    });
+}
+
+#pragma mark - UIView and UICollectionView
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView* view=[super hitTest:point withEvent:event];
     if (!view){

@@ -7,7 +7,7 @@
 //
 
 #import "WKPagesCollectionViewCell.h"
-#import "WKFlipView.h"
+#import "WKPagesCollectionView.h"
 @implementation WKPagesCollectionViewCell
 @dynamic showingState;
 - (id)initWithFrame:(CGRect)frame
@@ -75,7 +75,10 @@
 -(IBAction)onTapGesture:(UITapGestureRecognizer*)tapGesture{
     NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
 //    NSLog(@"row:%d",indexPath.row);
-    [self.collectionView.delegate collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+//    [self.collectionView.delegate collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+    [(WKPagesCollectionView*)self.collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
+        NSLog(@"highlight completed");
+    }];
 }
 #pragma mark - Properties
 -(void)setShowingState:(WKPagesCollectionViewCellShowingState)showingState{
@@ -137,7 +140,15 @@
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             NSLog(@"delete cell at %d",indexPath.row);
             //self.alpha=0.0f;
-            [self.cellDelegate removeCellAtIndexPath:indexPath];
+            ///删除数据
+            id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
+            [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtNSIndexPath:indexPath];
+            ///动画
+            [self.collectionView performBatchUpdates:^{
+                [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
+            } completion:^(BOOL finished) {
+                
+            }];
         }
     }
 }

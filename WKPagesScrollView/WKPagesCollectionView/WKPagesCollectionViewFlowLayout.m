@@ -122,7 +122,7 @@
 -(void)makeRotateTransformForAttributes2:(UICollectionViewLayoutAttributes*)attributes{
     attributes.zIndex=attributes.indexPath.row;///要设置zIndex，否则遮挡顺序会有编号
     CGFloat normalizedDistance=attributes.indexPath.row/9.0f;
-    CGFloat rotate=RotateDegree+15.0f*normalizedDistance;
+    CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
     NSLog(@"makeRotateTransformForAttributes:%d,normalizedDistance:%f,rote:%f",attributes.indexPath.row,normalizedDistance,rotate);
     CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);
     attributes.transform3D=rotateTransform;

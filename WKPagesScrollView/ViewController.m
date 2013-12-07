@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,WKPagesCollectionViewCellDelegate>{
+@interface ViewController ()<WKPagesCollectionViewDataSource,WKPagesCollectionViewDelegate>{
     WKPagesCollectionView* _collectionView;
     NSMutableArray* _array;
 }
@@ -64,29 +64,7 @@
     }];
 }
 -(IBAction)onButtonAdd:(id)sender{
-    if (_collectionView.isHighLight){
-        [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
-            [self _addNewPage];
-        }];
-    }
-    else{
-        [self _addNewPage];
-    }
-}
--(void)_addNewPage{
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_array.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
-    double delayInSeconds = 0.3f;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        int lastRow=_array.count;
-        NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
-        [_array insertObject:@"new button" atIndex:lastRow];
-        [_collectionView performBatchUpdates:^{
-            [_collectionView insertItemsAtIndexPaths:@[insertIndexPath]];
-        } completion:^(BOOL finished) {
-            [_collectionView scrollToItemAtIndexPath:insertIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
-        }];
-    });
+    [_collectionView appendItem];
 }
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -97,8 +75,6 @@
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
-    //cell.clipsToBounds=NO;
-    cell.cellDelegate=self;
     UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]] autorelease];
     imageView.frame=self.view.bounds;
     [cell.cellContentView addSubview:imageView];
@@ -111,18 +87,13 @@
     [cell.cellContentView addSubview:button];
     return cell;
 }
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"select an item at row %d",indexPath.row);
-    [(WKPagesCollectionView*)collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
-        NSLog(@"highlight completed");
-    }];
+#pragma mark WKPagesCollectionViewDataSource
+///追加数据
+-(void)willAppendItemInCollectionView:(WKPagesCollectionView *)collectionView{
+    [_array addObject:@"new button"];
 }
-#pragma mark - WKPagesCollectionViewCellDelegate
--(void)removeCellAtIndexPath:(NSIndexPath *)indexPath{
+///删除数据
+-(void)collectionView:(WKPagesCollectionView *)collectionView willRemoveCellAtNSIndexPath:(NSIndexPath *)indexPath{
     [_array removeObjectAtIndex:indexPath.row];
-    [_collectionView performBatchUpdates:^{
-        [_collectionView deleteItemsAtIndexPaths:@[indexPath,]];
-    } completion:^(BOOL finished) {
-    }];
 }
 @end
