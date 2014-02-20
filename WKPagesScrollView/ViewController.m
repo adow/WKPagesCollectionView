@@ -93,7 +93,7 @@
     [_array addObject:@"new button"];
 }
 ///删除数据
--(void)collectionView:(WKPagesCollectionView *)collectionView willRemoveCellAtNSIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(WKPagesCollectionView *)collectionView willRemoveCellAtIndexPath:(NSIndexPath *)indexPath{
     [_array removeObjectAtIndex:indexPath.row];
 }
 @end

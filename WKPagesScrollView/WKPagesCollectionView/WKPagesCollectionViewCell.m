@@ -142,7 +142,7 @@
             //self.alpha=0.0f;
             ///删除数据
             id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
-            [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtNSIndexPath:indexPath];
+            [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtIndexPath:indexPath];
             ///动画
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];

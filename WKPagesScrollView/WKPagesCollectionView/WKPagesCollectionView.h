@@ -12,14 +12,16 @@
 @class WKPagesCollectionView;
 @protocol WKPagesCollectionViewDataSource<UICollectionViewDataSource>
 ///删除cell时用来删除数据
--(void)collectionView:(WKPagesCollectionView*)collectionView willRemoveCellAtNSIndexPath:(NSIndexPath*)indexPath;
+-(void)collectionView:(WKPagesCollectionView*)collectionView willRemoveCellAtIndexPath:(NSIndexPath*)indexPath;
 ///追加数据时调用
 -(void)willAppendItemInCollectionView:(WKPagesCollectionView*)collectionView;
 @end
 @protocol WKPagesCollectionViewDelegate <UICollectionViewDelegate>
-
-
-
+@optional
+///显示时的回调
+-(void)collectionView:(WKPagesCollectionView*)collectionView didShownToHightlightAtIndexPath:(NSIndexPath*)indexPath;
+///返回原来状态时的回调
+-(void)didDismissFromHightlightOnCollectionView:(WKPagesCollectionView*)collectionView;
 @end
 @interface WKPagesCollectionView : UICollectionView{
     UIImageView* _maskImageView;

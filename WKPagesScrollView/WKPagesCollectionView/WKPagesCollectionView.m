@@ -94,6 +94,9 @@
     } completion:^(BOOL finished) {
         _isHighLight=YES;
         completion(finished);
+        if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
+            [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
+        }
     }];
 }
 ///回到原来的状态
@@ -109,6 +112,9 @@
         self.scrollEnabled=YES;
         _isHighLight=NO;
         completion(finished);
+        if ([self.delegate respondsToSelector:@selector(didDismissFromHightlightOnCollectionView:)]){
+            [(id<WKPagesCollectionViewDelegate>)self.delegate didDismissFromHightlightOnCollectionView:self];
+        }
     }];
 }
 ///追加一个页面
