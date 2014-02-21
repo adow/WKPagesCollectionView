@@ -21,6 +21,18 @@
     [_maskImageView release];
     [super dealloc];
 }
+-(void)setHidden:(BOOL)hidden{
+    [super setHidden:hidden];
+    if (hidden){
+        if (_maskImageView){
+            [_maskImageView removeFromSuperview];
+            _maskImageView=nil;
+        }
+    }
+    else{
+        [self setMaskShow:_maskShow];
+    }
+}
 #pragma mark - Mask
 -(void)setMaskShow:(BOOL)maskShow{
     _maskShow=maskShow;
@@ -98,6 +110,33 @@
             [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
         }
     }];
+}
+-(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
+    if (_isHighLight){
+        return;
+    }
+    self.maskShow=NO;
+    self.scrollEnabled=NO;
+    [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+        NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
+        if (visibleIndexPath.row==indexPath.row){
+            cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
+        }
+        else if (visibleIndexPath.row<indexPath.row){
+            cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
+        }
+        else if (visibleIndexPath.row>indexPath.row){
+            cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
+        }
+        else{
+            cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+        }
+    }];
+    _isHighLight=YES;
+//    if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
+//        [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
+//    }
+    
 }
 ///回到原来的状态
 -(void)dismissFromHightLightWithCompletion:(void (^)(BOOL))completion{

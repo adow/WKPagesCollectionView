@@ -37,6 +37,8 @@
 #pragma mark - Action
 ///显示
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath completion:(void(^)(BOOL finished))completion;
+///没有动画的显示状态,不会有didShowCellToHightLight回调
+-(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath;
 ///回到原来的滚动状态
 -(void)dismissFromHightLightWithCompletion:(void(^)(BOOL finished))completion;
 ///追加内容
