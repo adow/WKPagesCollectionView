@@ -58,8 +58,8 @@
     CGGradientRef myGradient;
     CGColorSpaceRef myColorspace;
     size_t num_locations = 2;
-    CGFloat locations[2] = { 0.2, 0.9};
-    CGFloat components[8] = { 0.0,0.0,0.0, 0.0,  // Start color
+    CGFloat locations[2] = { 0.0, 1.0};
+    CGFloat components[8] = { 0.0,0.0,0.0, 0.1,  // Start color
         0.0,0.0,0.0,1.0}; // End color
     myColorspace = CGColorSpaceCreateDeviceRGB();
     myGradient = CGGradientCreateWithColorComponents (myColorspace, components,
@@ -67,7 +67,7 @@
     myGradient = CGGradientCreateWithColorComponents (myColorspace, components,
                                                       locations, num_locations);
     CGPoint myStartPoint={self.bounds.size.width/2,self.bounds.size.height/2};
-    CGFloat myStartRadius=0, myEndRadius=self.bounds.size.width*1.5;
+    CGFloat myStartRadius=0, myEndRadius=self.bounds.size.width*1.3;
     CGContextDrawRadialGradient (context, myGradient, myStartPoint,
                                  myStartRadius, myStartPoint, myEndRadius,
                                  kCGGradientDrawsAfterEndLocation);
