@@ -92,7 +92,7 @@
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             CGFloat lineSpacing=pageHeight-160;
-            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row;
+            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row + 120;
             //NSLog(@"moveY:%f, contentOffsetY:%f",moveY,self.collectionView.contentOffset.y);
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
             self.layer.transform=moveTransform;
