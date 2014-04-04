@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 秦 道平. All rights reserved.
 //
 
+
+
 #import <UIKit/UIKit.h>
 #import "WKPagesCollectionViewFlowLayout.h"
 #import "WKPagesCollectionViewCell.h"
@@ -32,7 +34,10 @@
 ///show mask
 @property (nonatomic,assign) BOOL maskShow;
 ///are showing
-@property (nonatomic,assign) BOOL isHighLight;
+@property (readonly,nonatomic,assign) BOOL isHighLight;
+
+///top offscreen margin
+@property (nonatomic,assign) CGFloat topOffScreenMargin;
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
 #pragma mark - Action
 ///show

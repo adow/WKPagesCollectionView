@@ -8,18 +8,26 @@
 
 #import "WKPagesCollectionView.h"
 
-#define TOP_MARGIN 120
+CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 
 @implementation WKPagesCollectionView
 @dynamic maskShow;
 
 
+- (CGFloat)topOffScreenMargin
+{
+    if (!_topOffScreenMargin) {
+        _topOffScreenMargin = TOP_OFFSCREEN_MARGIN;
+    }
+    return _topOffScreenMargin;
+}
+
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame{
     WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc ] init] autorelease];
-    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y - TOP_MARGIN, frame.size.width, frame.size.height + TOP_MARGIN);
+    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y - self.topOffScreenMargin, frame.size.width, frame.size.height + self.topOffScreenMargin);
     self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
-        self.contentInset=UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+        self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     }
     return self;
 }
@@ -86,7 +94,7 @@
     return image;
 }
 #pragma mark - Actions
-///显示状态
+///Display status
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
     if (_isHighLight){
         return;
