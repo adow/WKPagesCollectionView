@@ -7,13 +7,19 @@
 //
 
 #import "WKPagesCollectionView.h"
+
+#define TOP_MARGIN 120
+
 @implementation WKPagesCollectionView
 @dynamic maskShow;
+
+
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame{
-    WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
-    self=[super initWithFrame:frame collectionViewLayout:flowLayout];
+    WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc ] init] autorelease];
+    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y - TOP_MARGIN, frame.size.width, frame.size.height + TOP_MARGIN);
+    self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
-        self.contentInset=UIEdgeInsetsMake(-100.0f, 0.0f, 0.0f, 0.0f);
+        self.contentInset=UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     }
     return self;
 }
