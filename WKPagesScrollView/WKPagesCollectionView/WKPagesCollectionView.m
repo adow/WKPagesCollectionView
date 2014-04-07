@@ -184,7 +184,10 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 ///Adding a
 -(void)_addNewPage{
     int total=[self numberOfItemsInSection:0];
-    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    if (total > 0) {
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    }
+    
     double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
