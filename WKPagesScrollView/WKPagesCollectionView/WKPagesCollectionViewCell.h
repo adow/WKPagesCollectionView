@@ -19,13 +19,13 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
     UIScrollView* _scrollView;
 //    UIImageView* _maskImageView;
 }
-///正常状态下的位置
+///Position the normal state
 @property (nonatomic,assign) CATransform3D normalTransform;
-///正常状态下的位置
+///Position the normal state
 @property (nonatomic,assign) CGRect normalFrame;
-///显示状态
+///Display status
 @property (nonatomic,assign) WKPagesCollectionViewCellShowingState showingState;
-///引用collectionView
+///Quote collectionView
 @property (nonatomic,assign) UICollectionView* collectionView;
 @property (nonatomic,retain) UIView* cellContentView;
 -(UIImage*)makeGradientImage;

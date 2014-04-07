@@ -88,25 +88,25 @@
      CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
-            self.normalTransform=self.layer.transform;///先记录原来的位置
+            self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             CGFloat lineSpacing=pageHeight-160;
-            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row;
+            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row + [(WKPagesCollectionView *)self.collectionView topOffScreenMargin];
             //NSLog(@"moveY:%f, contentOffsetY:%f",moveY,self.collectionView.contentOffset.y);
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
             self.layer.transform=moveTransform;
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToTop:{
-            self.normalTransform=self.layer.transform;///先记录原来的位置
+            self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight, 0);
             self.layer.transform=CATransform3DConcat(self.normalTransform, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
-            self.normalTransform=self.layer.transform;///先记录原来的位置
+            self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
@@ -140,10 +140,10 @@
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             NSLog(@"delete cell at %d",indexPath.row);
             //self.alpha=0.0f;
-            ///删除数据
+            ///Delete data
             id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
             [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtIndexPath:indexPath];
-            ///动画
+            ///Animation
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
             } completion:^(BOOL finished) {

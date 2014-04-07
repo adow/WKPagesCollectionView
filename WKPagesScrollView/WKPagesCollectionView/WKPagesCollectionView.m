@@ -7,13 +7,27 @@
 //
 
 #import "WKPagesCollectionView.h"
+
+CGFloat const TOP_OFFSCREEN_MARGIN = 120;
+
 @implementation WKPagesCollectionView
 @dynamic maskShow;
+
+
+- (CGFloat)topOffScreenMargin
+{
+    if (!_topOffScreenMargin) {
+        _topOffScreenMargin = TOP_OFFSCREEN_MARGIN;
+    }
+    return _topOffScreenMargin;
+}
+
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame{
-    WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc]init] autorelease];
-    self=[super initWithFrame:frame collectionViewLayout:flowLayout];
+    WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc ] init] autorelease];
+    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y - self.topOffScreenMargin, frame.size.width, frame.size.height + self.topOffScreenMargin);
+    self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
-        self.contentInset=UIEdgeInsetsMake(-100.0f, 0.0f, 0.0f, 0.0f);
+        self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     }
     return self;
 }
@@ -80,7 +94,7 @@
     return image;
 }
 #pragma mark - Actions
-///显示状态
+///Display status
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
     if (_isHighLight){
         return;
@@ -138,7 +152,7 @@
 //    }
     
 }
-///回到原来的状态
+///Back to the original state
 -(void)dismissFromHightLightWithCompletion:(void (^)(BOOL))completion{
     self.maskShow=YES;
     if (!_isHighLight)
@@ -156,7 +170,7 @@
         }
     }];
 }
-///追加一个页面
+///Append a page
 -(void)appendItem{
     if (self.isHighLight){
         [self dismissFromHightLightWithCompletion:^(BOOL finished) {
@@ -167,14 +181,17 @@
         [self _addNewPage];
     }
 }
-///添加一页
+///Adding a
 -(void)_addNewPage{
     int total=[self numberOfItemsInSection:0];
-    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    if (total > 0) {
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    }
+    
     double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        ///添加数据
+        ///Add Data
         [(id<WKPagesCollectionViewDataSource>)self.dataSource willAppendItemInCollectionView:self];
         int lastRow=total;
         NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
@@ -202,7 +219,7 @@
     if (view==self){
         for (WKPagesCollectionViewCell* cell in self.visibleCells) {
             if (cell.showingState==WKPagesCollectionViewCellShowingStateHightlight){
-                return cell.cellContentView;///要把事件传递到这一层才可以
+                return cell.cellContentView;///Events should only be passed to this layer
             }
         }
     }
