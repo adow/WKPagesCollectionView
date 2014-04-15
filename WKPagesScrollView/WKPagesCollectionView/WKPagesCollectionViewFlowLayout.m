@@ -104,9 +104,9 @@
     return attributes;
     
 }
-///为attribute设置新的角度
+///As attribute set up a new perspective
 -(void)makeRotateTransformForAttributes:(UICollectionViewLayoutAttributes*)attributes{
-    attributes.zIndex=attributes.indexPath.row;///要设置zIndex，否则遮挡顺序会有编号
+    attributes.zIndex=attributes.indexPath.row;///To set the zIndex，Otherwise, there will be NO blocking order
     CGFloat distance=attributes.frame.origin.y-self.collectionView.contentOffset.y;
     CGFloat normalizedDistance = distance / self.collectionView.frame.size.height;
     normalizedDistance=fmaxf(normalizedDistance, 0.0f);
@@ -114,13 +114,13 @@
     //CGFloat rotate=RotateDegree;
     NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
           attributes.indexPath.row,normalizedDistance,rotate);
-    ///角度大的会和角度小的cell交叉，即使设置zIndex也没有用，这里设置底部的cell角度越来越大
+    ///Angle and angle will cross a small cell, even if you set zIndex is useless here to set the angle of the bottom of the cell is growing
     CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);
     attributes.transform3D=rotateTransform;
     
 }
 -(void)makeRotateTransformForAttributes2:(UICollectionViewLayoutAttributes*)attributes{
-    attributes.zIndex=attributes.indexPath.row;///要设置zIndex，否则遮挡顺序会有编号
+    attributes.zIndex=attributes.indexPath.row;///To set the zIndex, otherwise there will be NO blocking order
     CGFloat normalizedDistance=attributes.indexPath.row/9.0f;
     CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
     NSLog(@"makeRotateTransformForAttributes:%d,normalizedDistance:%f,rote:%f",attributes.indexPath.row,normalizedDistance,rotate);
