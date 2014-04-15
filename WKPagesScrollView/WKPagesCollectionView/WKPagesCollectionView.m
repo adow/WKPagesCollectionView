@@ -57,17 +57,19 @@
     
     CGGradientRef myGradient;
     CGColorSpaceRef myColorspace;
-    size_t num_locations = 2;
-    CGFloat locations[2] = { 0.0, 1.0};
-    CGFloat components[8] = { 0.0,0.0,0.0, 0.1,  // Start color
-        0.0,0.0,0.0,1.0}; // End color
+    size_t num_locations = 3;
+    CGFloat locations[] = { 0.0,0.6f, 1.0};
+    CGFloat components[] = {
+        0.0,0.0,0.0,0.0,  // Start color
+        0.0,0.0,0.0,0.2,
+        0.0,0.0,0.0,0.6}; // End color
     myColorspace = CGColorSpaceCreateDeviceRGB();
     myGradient = CGGradientCreateWithColorComponents (myColorspace, components,
                                                       locations, num_locations);
     myGradient = CGGradientCreateWithColorComponents (myColorspace, components,
                                                       locations, num_locations);
     CGPoint myStartPoint={self.bounds.size.width/2,self.bounds.size.height/2};
-    CGFloat myStartRadius=0, myEndRadius=self.bounds.size.width*1.3;
+    CGFloat myStartRadius=0, myEndRadius=self.bounds.size.width;
     CGContextDrawRadialGradient (context, myGradient, myStartPoint,
                                  myStartRadius, myStartPoint, myEndRadius,
                                  kCGGradientDrawsAfterEndLocation);
@@ -82,12 +84,62 @@
 #pragma mark - Actions
 ///显示状态
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
+    NSLog(@"row:%d",indexPath.row);
     if (_isHighLight){
         return;
     }
-    self.maskShow=NO;
-    self.scrollEnabled=NO;
-    [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    ///如果在可视范围内就不要滚动了
+    BOOL no_scroll=NO;
+    NSArray* visibleIndexPaths=[self indexPathsForVisibleItems];
+    for (NSIndexPath* indexPath in visibleIndexPaths) {
+        if (indexPath.row==indexPath.row){
+            no_scroll=YES;
+        }
+    }
+    if (!no_scroll){
+        [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
+    double delayInSeconds = 0.3f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.maskShow=NO;
+        self.scrollEnabled=NO;
+        [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+                NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
+                if (visibleIndexPath.row==indexPath.row){
+                    cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
+                }
+                else if (visibleIndexPath.row<indexPath.row){
+                    cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
+                }
+                else if (visibleIndexPath.row>indexPath.row){
+                    cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
+                }
+                else{
+                    cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+                }
+            }];
+        } completion:^(BOOL finished) {
+            _isHighLight=YES;
+            completion(finished);
+            if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
+                [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
+            }
+        }];
+    });
+    
+}
+-(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
+    if (_isHighLight){
+        return;
+    }
+    [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
+    double delayInSeconds = 0.01f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.maskShow=NO;
+        self.scrollEnabled=NO;
         [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
             NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
             if (visibleIndexPath.row==indexPath.row){
@@ -103,39 +155,8 @@
                 cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
             }
         }];
-    } completion:^(BOOL finished) {
         _isHighLight=YES;
-        completion(finished);
-        if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
-            [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
-        }
-    }];
-}
--(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
-    if (_isHighLight){
-        return;
-    }
-    self.maskShow=NO;
-    self.scrollEnabled=NO;
-    [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-        NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
-        if (visibleIndexPath.row==indexPath.row){
-            cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
-        }
-        else if (visibleIndexPath.row<indexPath.row){
-            cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
-        }
-        else if (visibleIndexPath.row>indexPath.row){
-            cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
-        }
-        else{
-            cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
-        }
-    }];
-    _isHighLight=YES;
-//    if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
-//        [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
-//    }
+    });
     
 }
 ///回到原来的状态
