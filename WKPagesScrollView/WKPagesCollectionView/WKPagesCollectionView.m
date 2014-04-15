@@ -28,6 +28,8 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
         self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+        self.highLightAnimationDuration=1.0f;
+        self.dismisalAnimationDuration=1.0f;
     }
     return self;
 }
@@ -118,7 +120,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         self.maskShow=NO;
         self.scrollEnabled=NO;
-        [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:self.highLightAnimationDuration delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
             [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
                 NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
                 if (visibleIndexPath.row==indexPath.row){
@@ -178,7 +180,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     self.maskShow=YES;
     if (!_isHighLight)
         return;
-    [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:self.dismisalAnimationDuration delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
             cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
         }];

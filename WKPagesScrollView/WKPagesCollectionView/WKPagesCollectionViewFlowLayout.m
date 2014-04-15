@@ -119,12 +119,4 @@
     attributes.transform3D=rotateTransform;
     
 }
--(void)makeRotateTransformForAttributes2:(UICollectionViewLayoutAttributes*)attributes{
-    attributes.zIndex=attributes.indexPath.row;///To set the zIndex, otherwise there will be NO blocking order
-    CGFloat normalizedDistance=attributes.indexPath.row/9.0f;
-    CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
-    NSLog(@"makeRotateTransformForAttributes:%d,normalizedDistance:%f,rote:%f",attributes.indexPath.row,normalizedDistance,rotate);
-    CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);
-    attributes.transform3D=rotateTransform;
-}
 @end

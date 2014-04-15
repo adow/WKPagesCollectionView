@@ -38,6 +38,10 @@
 
 ///top offscreen margin
 @property (nonatomic,assign) CGFloat topOffScreenMargin;
+///duration from normal to highlight state,default is 1 second
+@property (nonatomic,assign) CGFloat highLightAnimationDuration;
+///duration from highlight to nomral state, default is 1 second
+@property (nonatomic,assign) CGFloat dismisalAnimationDuration;
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
 #pragma mark - Action
 ///show
