@@ -25,7 +25,7 @@
     for (int a=0; a<=30; a++) {
         [_array addObject:[NSString stringWithFormat:@"button %d",a]];
     }
-    _collectionView=[[[WKPagesCollectionView alloc]initWithPagesFlowLayoutAndFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
+    _collectionView=[[[WKPagesCollectionView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];

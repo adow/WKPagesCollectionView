@@ -84,12 +84,13 @@
     _showingState=showingState;
     WKPagesCollectionViewFlowLayout* collectionLayout=(WKPagesCollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     CGFloat pageHeight=collectionLayout.pageHeight;
+    CGFloat topMargin=[(WKPagesCollectionView*)self.collectionView topOffScreenMargin];
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            CGFloat moveY=self.collectionView.contentOffset.y-(WKPagesCollectionViewPageSpacing)*indexPath.row + [(WKPagesCollectionView *)self.collectionView topOffScreenMargin];
+            CGFloat moveY=self.collectionView.contentOffset.y-(WKPagesCollectionViewPageSpacing)*indexPath.row +topMargin;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
             self.layer.transform=moveTransform;
         }
@@ -97,14 +98,14 @@
         case WKPagesCollectionViewCellShowingStateBackToTop:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight*1.2, 0);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight-topMargin, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight*1.2, 0);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight+topMargin, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
             break;

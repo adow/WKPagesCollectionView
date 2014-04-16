@@ -42,7 +42,6 @@
 @property (nonatomic,assign) CGFloat highLightAnimationDuration;
 ///duration from highlight to nomral state, default is 0.5 second
 @property (nonatomic,assign) CGFloat dismisalAnimationDuration;
--(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame;
 #pragma mark - Action
 ///show
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath*)indexPath completion:(void(^)(BOOL finished))completion;

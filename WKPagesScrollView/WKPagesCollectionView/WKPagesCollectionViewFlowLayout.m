@@ -35,8 +35,10 @@
     return self.itemSize.height;
 }
 -(CGSize)collectionViewContentSize{
-    CGFloat contentHeight=WKPagesCollectionViewPageSpacing*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight+
-        [(WKPagesCollectionView*)self.collectionView topOffScreenMargin];
+    
+    int numberOfItems=[self.collectionView numberOfItemsInSection:0];
+    CGFloat topMargin=[(WKPagesCollectionView*)self.collectionView  topOffScreenMargin];
+    CGFloat contentHeight=numberOfItems*self.pageHeight+self.self.minimumLineSpacing*(numberOfItems-1)+topMargin;
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
