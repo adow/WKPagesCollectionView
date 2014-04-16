@@ -232,7 +232,6 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
         }];
     });
 }
-
 #pragma mark - UIView and UICollectionView
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView* view=[super hitTest:point withEvent:event];

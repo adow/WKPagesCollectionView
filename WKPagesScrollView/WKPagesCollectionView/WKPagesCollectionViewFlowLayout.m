@@ -8,6 +8,7 @@
 
 
 #import "WKPagesCollectionViewFlowLayout.h"
+#import "WKPagesCollectionView.h"
 #define RotateDegree -60.0f
 @interface WKPagesCollectionViewFlowLayout()
 @property (nonatomic,retain) NSMutableArray* deleteIndexPaths;
@@ -34,7 +35,8 @@
     return self.itemSize.height;
 }
 -(CGSize)collectionViewContentSize{
-    CGFloat contentHeight=WKPagesCollectionViewPageSpacing*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight;
+    CGFloat contentHeight=WKPagesCollectionViewPageSpacing*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight+
+        [(WKPagesCollectionView*)self.collectionView topOffScreenMargin];
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
@@ -61,7 +63,7 @@
 }
 #pragma mark Collection Update
 -(void)prepareForCollectionViewUpdates:(NSArray *)updateItems{
-    NSLog(@"prepareForCollectionViewUpdates");
+//    NSLog(@"prepareForCollectionViewUpdates");
     [super prepareForCollectionViewUpdates:updateItems];
     self.deleteIndexPaths=[NSMutableArray array];
     self.insertIndexPaths=[NSMutableArray array];
@@ -75,7 +77,7 @@
     }
 }
 -(void)finalizeCollectionViewUpdates{
-    NSLog(@"finalizeCollectionViewUpdates");
+//    NSLog(@"finalizeCollectionViewUpdates");
     [super finalizeCollectionViewUpdates];
     self.deleteIndexPaths=nil;
     self.insertIndexPaths=nil;
