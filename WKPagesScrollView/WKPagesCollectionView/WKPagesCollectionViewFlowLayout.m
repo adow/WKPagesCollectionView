@@ -26,15 +26,15 @@
 -(void)prepareLayout
 {
     [super prepareLayout];
-    self.itemSize=CGSizeMake(self.collectionView.frame.size.width,self.pageHeight);
-    self.minimumLineSpacing=-1*(self.itemSize.height-160.0f);
+    self.itemSize=[UIScreen mainScreen].bounds.size;
+    self.minimumLineSpacing=-1*(self.itemSize.height-WKPagesCollectionViewPageSpacing);
     self.scrollDirection=UICollectionViewScrollDirectionVertical;
 }
 -(CGFloat)pageHeight{
-    return [UIScreen mainScreen].bounds.size.height;
+    return self.itemSize.height;
 }
 -(CGSize)collectionViewContentSize{
-    CGFloat contentHeight=160.0f*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight;
+    CGFloat contentHeight=WKPagesCollectionViewPageSpacing*([self.collectionView numberOfItemsInSection:0]-1)+self.pageHeight;
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
@@ -45,14 +45,14 @@
 }
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
-    NSLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
+//    NSLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
     UICollectionViewLayoutAttributes* attributes=[super layoutAttributesForItemAtIndexPath:path];
     [self makeRotateTransformForAttributes:attributes];
     return attributes;
 }
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    NSLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
+//    NSLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     for (UICollectionViewLayoutAttributes* attributes in array) {
         [self makeRotateTransformForAttributes:attributes];
@@ -82,7 +82,7 @@
 }
 -(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
     UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
+//    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
     if ([self.insertIndexPaths containsObject:itemIndexPath]){
         if (!attributes)
             attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
@@ -112,8 +112,8 @@
     normalizedDistance=fmaxf(normalizedDistance, 0.0f);
     CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
     //CGFloat rotate=RotateDegree;
-    NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
-          attributes.indexPath.row,normalizedDistance,rotate);
+//    NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
+//          attributes.indexPath.row,normalizedDistance,rotate);
     ///Angle and angle will cross a small cell, even if you set zIndex is useless here to set the angle of the bottom of the cell is growing
     CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);
     attributes.transform3D=rotateTransform;

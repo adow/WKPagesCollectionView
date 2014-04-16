@@ -21,15 +21,14 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     }
     return _topOffScreenMargin;
 }
-
 -(id)initWithPagesFlowLayoutAndFrame:(CGRect)frame{
     WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc ] init] autorelease];
     CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y - self.topOffScreenMargin, frame.size.width, frame.size.height + self.topOffScreenMargin);
     self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
         self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
-        self.highLightAnimationDuration=1.0f;
-        self.dismisalAnimationDuration=1.0f;
+        self.highLightAnimationDuration=0.5f;
+        self.dismisalAnimationDuration=0.5f;
     }
     return self;
 }
@@ -130,6 +129,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
                 }
                 else if (visibleIndexPath.row>indexPath.row){
+                    NSLog(@"indexPath:%d,visibleIndexPath:%d",indexPath.row,visibleIndexPath.row);
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
                 }
                 else{

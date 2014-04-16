@@ -9,6 +9,7 @@
 #ifndef WKPagesScrollView_WK_h
 #define WKPagesScrollView_WK_h
 
+#define WKPagesCollectionViewPageSpacing 160.0f
 
 static inline CATransform3D WKFlipCATransform3DMakePerspective(CGPoint center, float disZ)
 {

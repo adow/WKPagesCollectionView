@@ -64,9 +64,6 @@
 }
 -(void)prepareForReuse{
     [super prepareForReuse];
-//    for (UIView* view in self.contentView.subviews) {
-//        [view removeFromSuperview];
-//    }
     for (UIView* view in _cellContentView.subviews) {
         [view removeFromSuperview];
     }
@@ -85,15 +82,14 @@
     if (_showingState==showingState)
         return;
     _showingState=showingState;
-     CGFloat pageHeight=[UIScreen mainScreen].bounds.size.height;
+    WKPagesCollectionViewFlowLayout* collectionLayout=(WKPagesCollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    CGFloat pageHeight=collectionLayout.pageHeight;
     switch (showingState) {
         case WKPagesCollectionViewCellShowingStateHightlight:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            CGFloat lineSpacing=pageHeight-160;
-            CGFloat moveY=self.collectionView.contentOffset.y-(pageHeight-lineSpacing)*indexPath.row + [(WKPagesCollectionView *)self.collectionView topOffScreenMargin];
-            //NSLog(@"moveY:%f, contentOffsetY:%f",moveY,self.collectionView.contentOffset.y);
+            CGFloat moveY=self.collectionView.contentOffset.y-(WKPagesCollectionViewPageSpacing)*indexPath.row + [(WKPagesCollectionView *)self.collectionView topOffScreenMargin];
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
             self.layer.transform=moveTransform;
         }
@@ -101,14 +97,14 @@
         case WKPagesCollectionViewCellShowingStateBackToTop:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight, 0);
-            self.layer.transform=CATransform3DConcat(self.normalTransform, moveTransform);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight*1.2, 0);
+            self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
-            CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight, 0);
+            CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight*1.2, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
             break;
