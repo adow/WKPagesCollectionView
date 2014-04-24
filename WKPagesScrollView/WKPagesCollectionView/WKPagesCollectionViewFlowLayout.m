@@ -37,8 +37,8 @@
 -(CGSize)collectionViewContentSize{
     
     int numberOfItems=[self.collectionView numberOfItemsInSection:0];
-    CGFloat topMargin=[(WKPagesCollectionView*)self.collectionView  topOffScreenMargin];
-    CGFloat contentHeight=numberOfItems*self.pageHeight+self.self.minimumLineSpacing*(numberOfItems-1)+topMargin;
+//    CGFloat topMargin=[(WKPagesCollectionView*)self.collectionView  topOffScreenMargin];
+    CGFloat contentHeight=numberOfItems*self.pageHeight+self.self.minimumLineSpacing*(numberOfItems-1);
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
     return CGSizeMake(self.collectionView.frame.size.width,contentHeight);
 }
