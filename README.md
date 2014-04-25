@@ -90,7 +90,7 @@
 		}
 
 ##TODO
-* `bug` <s>每滚动几个时候顶上的那一个就会先看不见然后又突然出现了，还没想到原因</s> 这个问题已经解决，@Nikolay Abelyashev 修复了这个bug,原因是由于WKPagesCollectionView的高度太小，而UICollectionView会把屏幕外的cell不在显示，在WKPagesCollectionView中，屏幕外的3个cell会被取消显示，解决的办法是修改WKPagesCollectionView的frame，使他高出window（这里添加了 topOfScreen:120.0f）,然后把frame.origin.y也往上移动了那么多距离，这样WKPagesCollectionView其实就更大;
+* `bug` ~~每滚动几个时候顶上的那一个就会先看不见然后又突然出现了，还没想到原因~~ 这个问题已经解决，@Nikolay Abelyashev 修复了这个bug,原因是由于WKPagesCollectionView的高度太小，而UICollectionView会把屏幕外的cell不在显示，在WKPagesCollectionView中，屏幕外的3个cell会被取消显示，解决的办法是修改WKPagesCollectionView的frame，使他高出window（这里添加了 topOfScreen:120.0f）,然后把frame.origin.y也往上移动了那么多距离，这样WKPagesCollectionView其实就更大;
 
 
 
