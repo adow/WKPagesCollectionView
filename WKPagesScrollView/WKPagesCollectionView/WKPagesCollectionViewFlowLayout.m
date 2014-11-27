@@ -36,7 +36,7 @@
 }
 -(CGSize)collectionViewContentSize{
     
-    int numberOfItems=[self.collectionView numberOfItemsInSection:0];
+    NSInteger numberOfItems=[self.collectionView numberOfItemsInSection:0];
 //    CGFloat topMargin=[(WKPagesCollectionView*)self.collectionView  topOffScreenMargin];
     CGFloat contentHeight=numberOfItems*self.pageHeight+self.self.minimumLineSpacing*(numberOfItems-1);
     contentHeight=fmaxf(contentHeight, self.collectionView.frame.size.height);
@@ -96,7 +96,7 @@
     return attributes;
 }
 -(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
+    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%ld",(long)itemIndexPath.row);
     UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
     if ([self.deleteIndexPaths containsObject:itemIndexPath]){
         if (!attributes){
