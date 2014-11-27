@@ -100,7 +100,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 #pragma mark - Actions
 ///Display status
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
-    NSLog(@"row:%d",indexPath.row);
+    NSLog(@"row:%ld",(long)indexPath.row);
     if (_isHighLight){
         return;
     }
@@ -130,7 +130,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
                 }
                 else if (visibleIndexPath.row>indexPath.row){
-                    NSLog(@"indexPath:%d,visibleIndexPath:%d",indexPath.row,visibleIndexPath.row);
+                    NSLog(@"indexPath:%ld,visibleIndexPath:%ld",(long)indexPath.row,(long)visibleIndexPath.row);
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
                 }
                 else{
@@ -207,7 +207,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 }
 ///Adding a
 -(void)_addNewPage{
-    int total=[self numberOfItemsInSection:0];
+    NSInteger total=[self numberOfItemsInSection:0];
     if (total > 0) {
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     }
@@ -217,7 +217,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         ///Add Data
         [(id<WKPagesCollectionViewDataSource>)self.dataSource willAppendItemInCollectionView:self];
-        int lastRow=total;
+        NSInteger lastRow=total;
         NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
         [self performBatchUpdates:^{
             [self insertItemsAtIndexPaths:@[insertIndexPath]];

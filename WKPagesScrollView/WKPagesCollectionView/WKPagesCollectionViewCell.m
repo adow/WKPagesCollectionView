@@ -135,7 +135,7 @@
     if (self.showingState==WKPagesCollectionViewCellShowingStateNormal){
         if (scrollView.contentOffset.x>=90.0f){
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            NSLog(@"delete cell at %d",indexPath.row);
+            NSLog(@"delete cell at %ld",(long)indexPath.row);
             //self.alpha=0.0f;
             ///Delete data
             id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
