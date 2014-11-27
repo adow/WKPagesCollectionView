@@ -20,21 +20,8 @@
 		68D7C1E618347A08006B418C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1E418347A08006B418C /* Main.storyboard */; };
 		68D7C1E918347A08006B418C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C1E818347A08006B418C /* ViewController.m */; };
 		68D7C1EB18347A08006B418C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C1EA18347A08006B418C /* Images.xcassets */; };
-		68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1F118347A08006B418C /* XCTest.framework */; };
-		68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
-		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
 		68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C20D18349B4C006B418C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		68D7C1F518347A08006B418C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68D7C1C718347A08006B418C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68D7C1CE18347A08006B418C;
-			remoteInfo = WKPagesScrollView;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		68A1CF26184CD0DB00346DF8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -59,7 +46,6 @@
 		68D7C1E718347A08006B418C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		68D7C1E818347A08006B418C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		68D7C1EA18347A08006B418C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1F118347A08006B418C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		68D7C20D18349B4C006B418C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -73,16 +59,6 @@
 				68D7C1D518347A08006B418C /* CoreGraphics.framework in Frameworks */,
 				68D7C1D718347A08006B418C /* UIKit.framework in Frameworks */,
 				68D7C1D318347A08006B418C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68D7C1ED18347A08006B418C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				68D7C1F218347A08006B418C /* XCTest.framework in Frameworks */,
-				68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */,
-				68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */,
-				68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,24 +156,6 @@
 			productReference = 68D7C1CF18347A08006B418C /* WKPagesCollectionView.app */;
 			productType = "com.apple.product-type.application";
 		};
-		68D7C1EF18347A08006B418C /* WKPagesCollectionViewTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionViewTests" */;
-			buildPhases = (
-				68D7C1EC18347A08006B418C /* Sources */,
-				68D7C1ED18347A08006B418C /* Frameworks */,
-				68D7C1EE18347A08006B418C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				68D7C1F618347A08006B418C /* PBXTargetDependency */,
-			);
-			name = WKPagesCollectionViewTests;
-			productName = WKPagesScrollViewTests;
-			productReference = 68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,11 +164,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "秦 道平";
-				TargetAttributes = {
-					68D7C1EF18347A08006B418C = {
-						TestTargetID = 68D7C1CE18347A08006B418C;
-					};
-				};
 			};
 			buildConfigurationList = 68D7C1CA18347A08006B418C /* Build configuration list for PBXProject "WKPagesCollectionView" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -227,7 +179,6 @@
 			projectRoot = "";
 			targets = (
 				68D7C1CE18347A08006B418C /* WKPagesCollectionView */,
-				68D7C1EF18347A08006B418C /* WKPagesCollectionViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -241,13 +192,6 @@
 				68D7C1DD18347A08006B418C /* InfoPlist.strings in Resources */,
 				68A1CF27184CD0DB00346DF8 /* README.md in Resources */,
 				68D7C1E618347A08006B418C /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68D7C1EE18347A08006B418C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,22 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68D7C1EC18347A08006B418C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		68D7C1F618347A08006B418C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68D7C1CE18347A08006B418C /* WKPagesCollectionView */;
-			targetProxy = 68D7C1F518347A08006B418C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		68D7C1DB18347A08006B418C /* InfoPlist.strings */ = {
@@ -404,48 +333,6 @@
 			};
 			name = Release;
 		};
-		68D7C20518347A08006B418C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WKPagesScrollView.app/WKPagesScrollView";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
-				PRODUCT_NAME = WKPagesCollectionViewTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		68D7C20618347A08006B418C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WKPagesScrollView.app/WKPagesScrollView";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WKPagesScrollView/WKPagesScrollView-Prefix.pch";
-				INFOPLIST_FILE = "WKPagesScrollViewTests/WKPagesScrollViewTests-Info.plist";
-				PRODUCT_NAME = WKPagesCollectionViewTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,15 +350,6 @@
 			buildConfigurations = (
 				68D7C20218347A08006B418C /* Debug */,
 				68D7C20318347A08006B418C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		68D7C20418347A08006B418C /* Build configuration list for PBXNativeTarget "WKPagesCollectionViewTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				68D7C20518347A08006B418C /* Debug */,
-				68D7C20618347A08006B418C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
