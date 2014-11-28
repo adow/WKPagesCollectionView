@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license      = 'unknown'
   s.author       = { 'adow' => 'reynoldqin@gmail.com' }
   s.platform     = :ios, '7.0'
-  s.source       = { :git => 'https://github.com/NextFaze/WKPagesCollectionView.git' }
+  s.source       = { :git => 'https://github.com/adow/WKPagesCollectionView.git' }
   s.source_files = 'WKPagesScrollView/WKPagesCollectionView/*.{h,m}'
   s.frameworks   = 'QuartzCore', 'CoreGraphics'
   s.requires_arc = false
