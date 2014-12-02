@@ -168,9 +168,12 @@ Later I want to implement the delete item effect which like Safari's: hold on on
 
 To make the animation effect of add and delete item look better, we have to modify
 `(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath` 
-and `-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath`
 
-I add insertIndexPaths and deleteIndexPaths functions in WKPagesCollectionViewFlowLayout, to record the position when add and remove item. The two callback functions will be called not just for being added or deleted NSIndexPath, and will be called at another place.
+and 
+
+`-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath`
+
+I add `insertIndexPaths` and `deleteIndexPaths` functions in `WKPagesCollectionViewFlowLayout`, to record the position when add and remove item. The two callback functions will be called not just for being added or deleted `NSIndexPath`, and will be called at another place.
 
 		-(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
 		    UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
