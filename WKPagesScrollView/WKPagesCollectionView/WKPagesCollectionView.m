@@ -188,7 +188,9 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     } completion:^(BOOL finished) {
         self.scrollEnabled=YES;
         _isHighLight=NO;
-        completion(finished);
+        if (completion != nil) {
+            completion(finished);
+        }
         if ([self.delegate respondsToSelector:@selector(didDismissFromHightlightOnCollectionView:)]){
             [(id<WKPagesCollectionViewDelegate>)self.delegate didDismissFromHightlightOnCollectionView:self];
         }
