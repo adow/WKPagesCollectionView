@@ -58,10 +58,25 @@
     [super dealloc];
 }
 -(IBAction)onButtonTitle:(id)sender{
-    NSLog(@"button");
+    UIView *thisButton = (UIView *)sender;
+    if (!_collectionView.isHighLight) {
+        NSArray* visibleIndexPaths=[_collectionView indexPathsForVisibleItems];
+        for (NSIndexPath* indexPath in visibleIndexPaths) {
+            WKPagesCollectionViewCell* cell = (WKPagesCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+            
+            BOOL doesContain = [cell.cellContentView.subviews containsObject:thisButton];
+            if (doesContain ) {
+                [(WKPagesCollectionView*)_collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
+                    NSLog(@"highlight completed");
+                }];
+                break;
+            }
+        }
+    } else {
     [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
         NSLog(@"dismiss completed");
     }];
+    }
 }
 -(IBAction)onButtonAdd:(id)sender{
     [_collectionView appendItem];
