@@ -8,6 +8,9 @@
 
 #import "WKPagesCollectionViewCell.h"
 #import "WKPagesCollectionView.h"
+#import "WKCloseButton.h"
+#define CLOSE_BUTTON_WIDTH 35
+#define CLOSE_BUTTON_HEIGHT CLOSE_BUTTON_WIDTH * 1.5
 @implementation WKPagesCollectionViewCell
 @dynamic showingState;
 - (id)initWithFrame:(CGRect)frame
@@ -44,6 +47,13 @@
             _tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTapGesture:)];
             [_scrollView addGestureRecognizer:_tapGesture];
         }
+        
+        if (!_closeButton) {
+            _closeButton = [[WKCloseButton alloc] initWithFrame:CGRectMake(0, 0, CLOSE_BUTTON_WIDTH, CLOSE_BUTTON_HEIGHT)];
+            [_closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [_scrollView addSubview:_closeButton];
+        }
+        
     }
     return self;
 }
@@ -77,6 +87,12 @@
         NSLog(@"highlight completed");
     }];
 }
+
+-(IBAction) closeButtonPressed:(id)sender
+{
+    [self removeCurrentCell];
+    
+}
 #pragma mark - Properties
 -(void)setShowingState:(WKPagesCollectionViewCellShowingState)showingState{
     if (_showingState==showingState)
@@ -89,6 +105,7 @@
         case WKPagesCollectionViewCellShowingStateHightlight:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
+            _closeButton.hidden = YES;
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
             CGFloat moveY=self.collectionView.contentOffset.y-(WKPagesCollectionViewPageSpacing)*indexPath.row +topMargin;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0.0f, moveY, 0.0f);
@@ -98,6 +115,7 @@
         case WKPagesCollectionViewCellShowingStateBackToTop:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
+            _closeButton.hidden = NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight-topMargin, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
@@ -105,6 +123,7 @@
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
+            _closeButton.hidden = NO;
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight+topMargin, 0);
             self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
         }
@@ -112,6 +131,7 @@
         case WKPagesCollectionViewCellShowingStateNormal:{
             self.layer.transform=self.normalTransform;
             _scrollView.scrollEnabled=YES;
+            _closeButton.hidden = NO;
         }
             break;
         default:
@@ -124,6 +144,27 @@
 -(WKPagesCollectionViewCellShowingState)showingState{
     return _showingState;
 }
+
+
+#pragma mark - Remove cell
+
+-(void) removeCurrentCell
+{
+    NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
+    NSLog(@"delete cell at %ld",(long)indexPath.row);
+    //self.alpha=0.0f;
+    ///Delete data
+    id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
+    [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtIndexPath:indexPath];
+    ///Animation
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
+    } completion:^(BOOL finished) {
+        
+    }];
+
+}
+
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
@@ -135,18 +176,7 @@
     if (self.showingState==WKPagesCollectionViewCellShowingStateNormal){
         CGFloat slideDistance = scrollView.frame.size.width / 6;
         if (scrollView.contentOffset.x >= slideDistance){
-            NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            NSLog(@"delete cell at %ld",(long)indexPath.row);
-            //self.alpha=0.0f;
-            ///Delete data
-            id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
-            [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtIndexPath:indexPath];
-            ///Animation
-            [self.collectionView performBatchUpdates:^{
-                [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
-            } completion:^(BOOL finished) {
-                
-            }];
+            [self removeCurrentCell];
         }
     }
 }

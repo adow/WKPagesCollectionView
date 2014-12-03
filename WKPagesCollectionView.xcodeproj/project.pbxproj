@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58C2EC3E1A2F223100583CDE /* WKCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C2EC3D1A2F223100583CDE /* WKCloseButton.m */; };
 		68A1CF27184CD0DB00346DF8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 68A1CF26184CD0DB00346DF8 /* README.md */; };
 		68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7718432CCA00DB81A2 /* WKPagesCollectionView.m */; };
 		68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58C2EC3C1A2F223100583CDE /* WKCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCloseButton.h; sourceTree = "<group>"; };
+		58C2EC3D1A2F223100583CDE /* WKCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCloseButton.m; sourceTree = "<group>"; };
 		68A1CF26184CD0DB00346DF8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		68BDCE7518432CCA00DB81A2 /* WK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WK.h; sourceTree = "<group>"; };
 		68BDCE7618432CCA00DB81A2 /* WKPagesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPagesCollectionView.h; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */,
 				68BDCE7A18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.h */,
 				68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */,
+				58C2EC3C1A2F223100583CDE /* WKCloseButton.h */,
+				58C2EC3D1A2F223100583CDE /* WKCloseButton.m */,
 			);
 			path = WKPagesCollectionView;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				68D7C1E918347A08006B418C /* ViewController.m in Sources */,
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
 				68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */,
+				58C2EC3E1A2F223100583CDE /* WKCloseButton.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
 				68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */,
 				68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */,
