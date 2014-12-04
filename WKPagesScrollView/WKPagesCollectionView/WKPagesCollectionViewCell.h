@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKCloseButton.h"
 typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
     WKPagesCollectionViewCellShowingStateNormal=0,
     WKPagesCollectionViewCellShowingStateHightlight=1,
@@ -17,6 +18,7 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
     WKPagesCollectionViewCellShowingState _showingState;
     UITapGestureRecognizer* _tapGesture;
     UIScrollView* _scrollView;
+    WKCloseButton* _closeButton;
 //    UIImageView* _maskImageView;
 }
 ///Position the normal state
