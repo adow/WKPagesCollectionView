@@ -14,7 +14,6 @@
 -(id) initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    self.backgroundColor = [UIColor clearColor];
     if (self){
         [self drawCloseButton];
     }
@@ -24,7 +23,7 @@
 #pragma mark - DrawButton
 -(void) drawCloseButton
 {
-    
+    self.backgroundColor = [UIColor clearColor];
     CGFloat xOffset = self.bounds.size.width / 7;
     CGFloat yOffset = self.bounds.size.width / 7;
     CGFloat width = self.frame.size.width * 0.3;

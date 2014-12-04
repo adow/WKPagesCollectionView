@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WKCloseButton;
+#import "WKCloseButton.h"
 typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
     WKPagesCollectionViewCellShowingStateNormal=0,
     WKPagesCollectionViewCellShowingStateHightlight=1,

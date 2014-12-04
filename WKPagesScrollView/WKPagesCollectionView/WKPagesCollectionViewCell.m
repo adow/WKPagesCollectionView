@@ -9,8 +9,8 @@
 #import "WKPagesCollectionViewCell.h"
 #import "WKPagesCollectionView.h"
 #import "WKCloseButton.h"
-#define CLOSE_BUTTON_WIDTH 35
-#define CLOSE_BUTTON_HEIGHT CLOSE_BUTTON_WIDTH * 1.5
+#define CloseButtonWidth 35
+#define CloseButtonHeight CloseButtonWidth * 1.5
 @implementation WKPagesCollectionViewCell
 @dynamic showingState;
 - (id)initWithFrame:(CGRect)frame
@@ -49,7 +49,7 @@
         }
         
         if (!_closeButton) {
-            _closeButton = [[WKCloseButton alloc] initWithFrame:CGRectMake(0, 0, CLOSE_BUTTON_WIDTH, CLOSE_BUTTON_HEIGHT)];
+            _closeButton = [[WKCloseButton alloc] initWithFrame:CGRectMake(0, 0, CloseButtonWidth, CloseButtonHeight)];
             [_closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             [_scrollView addSubview:_closeButton];
         }
@@ -88,7 +88,7 @@
     }];
 }
 
--(IBAction) closeButtonPressed:(id)sender
+-(void) closeButtonPressed:(id)sender
 {
     [self removeCurrentCell];
     
@@ -146,17 +146,15 @@
 }
 
 
-#pragma mark - Remove cell
-
 -(void) removeCurrentCell
 {
     NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
     NSLog(@"delete cell at %ld",(long)indexPath.row);
     //self.alpha=0.0f;
-    ///Delete data
+    //Delete data
     id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
     [pagesDataSource collectionView:(WKPagesCollectionView*)self.collectionView willRemoveCellAtIndexPath:indexPath];
-    ///Animation
+    //Animation
     [self.collectionView performBatchUpdates:^{
         [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
     } completion:^(BOOL finished) {
