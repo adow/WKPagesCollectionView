@@ -11,6 +11,7 @@
 #import "WKCloseButton.h"
 #define CloseButtonWidth 35
 #define CloseButtonHeight CloseButtonWidth * 1.5
+#define HighLightRotateAngle -10.0f
 @implementation WKPagesCollectionViewCell
 @dynamic showingState;
 - (id)initWithFrame:(CGRect)frame
@@ -116,16 +117,18 @@
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             _closeButton.hidden = NO;
+            CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(HighLightRotateAngle);
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, -1*pageHeight-topMargin, 0);
-            self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
+            self.layer.transform=CATransform3DConcat(rotateTransform, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateBackToBottom:{
             self.normalTransform=self.layer.transform;///The original location of the first record
             _scrollView.scrollEnabled=NO;
             _closeButton.hidden = NO;
+            CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(HighLightRotateAngle);
             CATransform3D moveTransform=CATransform3DMakeTranslation(0, pageHeight+topMargin, 0);
-            self.layer.transform=CATransform3DConcat(CATransform3DIdentity, moveTransform);
+            self.layer.transform=CATransform3DConcat(rotateTransform, moveTransform);
         }
             break;
         case WKPagesCollectionViewCellShowingStateNormal:{
