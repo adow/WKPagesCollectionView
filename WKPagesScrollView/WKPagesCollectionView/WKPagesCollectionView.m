@@ -28,8 +28,8 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
     if (self){
         self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
-        self.highLightAnimationDuration=0.5f;
-        self.dismisalAnimationDuration=0.5f;
+        self.highLightAnimationDuration=0.3f;
+        self.dismisalAnimationDuration=0.3f;
     }
     return self;
 }
