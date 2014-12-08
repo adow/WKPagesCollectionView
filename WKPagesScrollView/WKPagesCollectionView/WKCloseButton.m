@@ -24,10 +24,10 @@
 -(void) drawCloseButton
 {
     self.backgroundColor = [UIColor clearColor];
-    CGFloat xOffset = self.bounds.size.width / 7;
-    CGFloat yOffset = self.bounds.size.width / 7;
-    CGFloat width = self.frame.size.width * 0.3;
-    CGFloat height = self.frame.size.height * 0.3;
+    CGFloat xOffset = CrossXOffset;
+    CGFloat yOffset = CrossYOffset;
+    CGFloat width = CrossWidth;
+    CGFloat height = CrossHeight;
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(xOffset, yOffset)];
     [path addLineToPoint:CGPointMake(width + xOffset, height + yOffset)];

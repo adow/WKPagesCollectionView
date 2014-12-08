@@ -9,9 +9,6 @@
 #import "WKPagesCollectionViewCell.h"
 #import "WKPagesCollectionView.h"
 #import "WKCloseButton.h"
-#define CloseButtonWidth 35
-#define CloseButtonHeight CloseButtonWidth * 1.5
-#define HighLightRotateAngle -10.0f
 @implementation WKPagesCollectionViewCell
 @dynamic showingState;
 - (id)initWithFrame:(CGRect)frame
