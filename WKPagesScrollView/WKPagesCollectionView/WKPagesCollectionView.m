@@ -216,7 +216,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 -(void)_addNewPage{
     NSInteger total=[self numberOfItemsInSection:0];
     if (total > 0) {
-        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
     }
     
     double delayInSeconds = 0.001f;
