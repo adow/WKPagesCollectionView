@@ -219,7 +219,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     }
     
-    double delayInSeconds = 0.3f;
+    double delayInSeconds = 0.001f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         ///Add Data
@@ -229,7 +229,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
         [self performBatchUpdates:^{
             [self insertItemsAtIndexPaths:@[insertIndexPath]];
         } completion:^(BOOL finished) {
-            double delayInSeconds = 0.3f;
+            double delayInSeconds = 0.001f;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self showCellToHighLightAtIndexPath:insertIndexPath completion:^(BOOL finished) {
