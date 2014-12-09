@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #define HighLightRotateAngle -10.0f
-#define CrossXOffset  12
-#define CrossYOffset  15
-#define CrossWidth   10.5
-#define CrossHeight  15.75
 #define CloseButtonWidth 120
 #define CloseButtonHeight 120
 @interface WKCloseButton : UIButton

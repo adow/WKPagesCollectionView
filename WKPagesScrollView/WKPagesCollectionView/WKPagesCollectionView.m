@@ -118,10 +118,10 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.maskShow=YES;
+        self.maskShow = YES;
         _maskImageView.hidden = NO;
         _maskImageView.alpha = 1.0;
-        self.scrollEnabled=NO;
+        self.scrollEnabled = NO;
         [UIView animateWithDuration:self.highLightAnimationDuration delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
             [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
                 NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
@@ -141,8 +141,8 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
                 _maskImageView.alpha = 0.0;
             }];
         } completion:^(BOOL finished) {
-            _isHighLight=YES;
-            self.maskShow=NO;
+            _isHighLight = YES;
+            self.maskShow = NO;
             completion(finished);
             if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
                 [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
