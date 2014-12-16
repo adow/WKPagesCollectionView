@@ -101,6 +101,11 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 ///Display status
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
     NSLog(@"row:%ld",(long)indexPath.row);
+    
+    if (indexPath.row >= [self numberOfItemsInSection:indexPath.section]){
+        return;
+    }
+    
     if (_isHighLight){
         return;
     }
@@ -152,9 +157,14 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     
 }
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row >= [self numberOfItemsInSection:indexPath.section]) {
+        return;
+    }
+
     if (_isHighLight){
         return;
     }
+
     double delayInSeconds = 0.01f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
