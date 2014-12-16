@@ -213,6 +213,10 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 }
 ///Append a page
 -(void)appendItem{
+    if (self.isAddingNewPage) {
+        return;
+    }
+    self.isAddingNewPage = YES;
     if (self.isHighLight){
         [self dismissFromHightLightWithCompletion:^(BOOL finished) {
             [self _addNewPage];
@@ -243,7 +247,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self showCellToHighLightAtIndexPath:insertIndexPath completion:^(BOOL finished) {
-                    
+                    self.isAddingNewPage = NO;
                 }];
             });
             

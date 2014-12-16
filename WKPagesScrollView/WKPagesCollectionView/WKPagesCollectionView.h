@@ -35,7 +35,7 @@
 @property (nonatomic,assign) BOOL maskShow;
 ///are showing
 @property (readonly,nonatomic,assign) BOOL isHighLight;
-
+@property (nonatomic, assign) BOOL isAddingNewPage;
 ///top offscreen margin
 @property (nonatomic,assign) CGFloat topOffScreenMargin;
 ///duration from normal to highlight state,default is 0.5 second
