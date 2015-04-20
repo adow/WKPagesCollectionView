@@ -64,12 +64,6 @@
     // Drawing code
 }
 */
--(void)dealloc{
-    [_tapGesture release];
-    [_cellContentView release];
-    [_scrollView release];
-    [super dealloc];
-}
 -(void)prepareForReuse{
     [super prepareForReuse];
     for (UIView* view in _cellContentView.subviews) {

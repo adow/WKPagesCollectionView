@@ -11,8 +11,8 @@
 #import "WKPagesCollectionView.h"
 #define RotateDegree -60.0f
 @interface WKPagesCollectionViewFlowLayout()
-@property (nonatomic,retain) NSMutableArray* deleteIndexPaths;
-@property (nonatomic,retain) NSMutableArray* insertIndexPaths;
+@property (nonatomic,strong) NSMutableArray* deleteIndexPaths;
+@property (nonatomic,strong) NSMutableArray* insertIndexPaths;
 @end
 @implementation WKPagesCollectionViewFlowLayout{
     

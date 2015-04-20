@@ -28,7 +28,7 @@ typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
 ///Display status
 @property (nonatomic,assign) WKPagesCollectionViewCellShowingState showingState;
 ///Quote collectionView
-@property (nonatomic,assign) UICollectionView* collectionView;
-@property (nonatomic,retain) UIView* cellContentView;
+@property (nonatomic,weak) UICollectionView* collectionView;
+@property (nonatomic,strong) UIView* cellContentView;
 -(UIImage*)makeGradientImage;
 @end

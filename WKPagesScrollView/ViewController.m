@@ -25,7 +25,7 @@
     for (int a=0; a<=30; a++) {
         [_array addObject:[NSString stringWithFormat:@"button %d",a]];
     }
-    _collectionView=[[[WKPagesCollectionView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
+    _collectionView=[[WKPagesCollectionView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -33,30 +33,21 @@
     _collectionView.maskShow=YES;
     
     
-    UIToolbar* toolBar=[[[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height-50.0f, self.view.frame.size.width, 50.0f)] autorelease];
+    UIToolbar* toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height-50.0f, self.view.frame.size.width, 50.0f)];
     toolBar.barStyle=UIBarStyleBlackTranslucent;
     toolBar.translucent=YES;
     toolBar.tintColor=[UIColor whiteColor];
     [self.view addSubview:toolBar];
     
     
-    UIBarButtonItem* addButtonItem=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onButtonAdd:)] autorelease];
+    UIBarButtonItem* addButtonItem=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onButtonAdd:)];
     toolBar.items=@[
-                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],
+                    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                     addButtonItem,
-                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],];
+                    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(void)dealloc{
-    [_array release];
-    [_collectionView release];
-    [super dealloc];
-}
+
 -(IBAction)onButtonTitle:(id)sender{
     UIView *thisButton = (UIView *)sender;
     if (!_collectionView.isHighLight) {
@@ -90,7 +81,7 @@
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;
-    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]] autorelease];
+    UIImageView* imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]];
     imageView.frame=self.view.bounds;
     [cell.cellContentView addSubview:imageView];
     UIButton* button=[UIButton buttonWithType:UIButtonTypeCustom];

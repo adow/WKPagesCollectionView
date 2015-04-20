@@ -22,7 +22,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     return _topOffScreenMargin;
 }
 -(id)initWithFrame:(CGRect)frame{
-    WKPagesCollectionViewFlowLayout* flowLayout=[[[WKPagesCollectionViewFlowLayout alloc ] init] autorelease];
+    WKPagesCollectionViewFlowLayout* flowLayout=[[WKPagesCollectionViewFlowLayout alloc ] init];
     CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y-self.topOffScreenMargin,
                                   frame.size.width, frame.size.height + self.topOffScreenMargin);
     self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
@@ -32,10 +32,6 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
         self.dismisalAnimationDuration=0.3f;
     }
     return self;
-}
--(void)dealloc{
-    [_maskImageView release];
-    [super dealloc];
 }
 -(void)setHidden:(BOOL)hidden{
     [super setHidden:hidden];
