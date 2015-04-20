@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "WK.h"
 
-@interface WKPagesCollectionViewFlowLayout : UICollectionViewFlowLayout{
-    
-}
+@interface WKPagesCollectionViewFlowLayout : UICollectionViewFlowLayout
+
 @property (nonatomic,readonly) CGFloat pageHeight;
 
 @end

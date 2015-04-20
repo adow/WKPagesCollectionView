@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WKPagesCollectionView.h"
-@interface ViewController : UIViewController{
-        
-}
+
+@interface ViewController : UIViewController
 
 @end

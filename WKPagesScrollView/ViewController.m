@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<WKPagesCollectionViewDataSource,WKPagesCollectionViewDelegate>{
-    WKPagesCollectionView* _collectionView;
-    NSMutableArray* _array;
-}
+static NSString *CellReuseIdentifier = @"CellReuseIdentifier";
+
+@interface ViewController ()<WKPagesCollectionViewDataSource,WKPagesCollectionViewDelegate>
+
+@property (nonatomic, strong) WKPagesCollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @end
 
@@ -20,80 +22,97 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    _array=[[NSMutableArray alloc]init];
-    for (int a=0; a<=30; a++) {
-        [_array addObject:[NSString stringWithFormat:@"button %d",a]];
+
+    self.items = [[NSMutableArray alloc] init];
+    
+    for (NSUInteger a = 0; a <= 30; a++) {
+        [self.items addObject:[NSString stringWithFormat:@"button %lu",(unsigned long)a]];
     }
-    _collectionView=[[[WKPagesCollectionView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
-    _collectionView.dataSource=self;
-    _collectionView.delegate=self;
-    [_collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    [self.view addSubview:_collectionView];
-    _collectionView.maskShow=YES;
     
+    self.collectionView = [[WKPagesCollectionView alloc] initWithFrame:self.view.bounds];
+    self.collectionView.dataSource=self;
+    self.collectionView.delegate=self;
+    [self.collectionView registerClass:[WKPagesCollectionViewCell class] forCellWithReuseIdentifier:CellReuseIdentifier];
+    [self.view addSubview:self.collectionView];
+    self.collectionView.maskShow = YES;
     
-    UIToolbar* toolBar=[[[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height-50.0f, self.view.frame.size.width, 50.0f)] autorelease];
-    toolBar.barStyle=UIBarStyleBlackTranslucent;
-    toolBar.translucent=YES;
-    toolBar.tintColor=[UIColor whiteColor];
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 50.0, self.view.frame.size.width, 50.0)];
+    toolBar.barStyle = UIBarStyleBlackTranslucent;
+    toolBar.translucent = YES;
+    toolBar.tintColor = [UIColor whiteColor];
     [self.view addSubview:toolBar];
     
-    
-    UIBarButtonItem* addButtonItem=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onButtonAdd:)] autorelease];
-    toolBar.items=@[
-                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],
-                    addButtonItem,
-                    [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],];
+    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onButtonAdd:)];
+    UIBarButtonItem *flexibleSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    toolBar.items = @[flexibleSpaceItem,
+                      addButtonItem,
+                      flexibleSpaceItem];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)onButtonTitle:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIView *thisButton = (UIView *)sender;
+    if (!self.collectionView.isHighLight) {
+        NSArray *visibleIndexPaths = [self.collectionView indexPathsForVisibleItems];
+        for (NSIndexPath *indexPath in visibleIndexPaths) {
+            WKPagesCollectionViewCell *cell = (WKPagesCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            BOOL doesContain = [cell.cellContentView.subviews containsObject:thisButton];
+            if (doesContain) {
+                [self.collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
+                    NSLog(@"highlight completed");
+                }];
+                break;
+            }
+        }
+    } else {
+        [self.collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
+            NSLog(@"dismiss completed");
+        }];
+    }
 }
--(void)dealloc{
-    [_array release];
-    [_collectionView release];
-    [super dealloc];
+
+- (IBAction)onButtonAdd:(id)sender
+{
+    [self.collectionView appendItem];
 }
--(IBAction)onButtonTitle:(id)sender{
-    NSLog(@"button");
-    [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
-        NSLog(@"dismiss completed");
-    }];
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.items.count;
 }
--(IBAction)onButtonAdd:(id)sender{
-    [_collectionView appendItem];
-}
-#pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _array.count;
-}
--(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"cellForItemAtIndexPath:%d",indexPath.row);
-    static NSString* identity=@"cell";
-    WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
-    cell.collectionView=collectionView;
-    UIImageView* imageView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]] autorelease];
-    imageView.frame=self.view.bounds;
+
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    WKPagesCollectionViewCell *cell = (WKPagesCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
+    cell.collectionView = collectionView;
+    
+    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image-0"]];
+    imageView.frame = self.view.bounds;
     [cell.cellContentView addSubview:imageView];
-    UIButton* button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(0, (indexPath.row+1)*10+100, 320, 50.0f);
-    button.backgroundColor=[UIColor whiteColor];
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 100.0, self.view.bounds.size.width, 50.0);
+    button.backgroundColor = [UIColor whiteColor];
     [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [button setTitle:_array[indexPath.row] forState:UIControlStateNormal];
+    [button setTitle:self.items[indexPath.row] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onButtonTitle:) forControlEvents:UIControlEventTouchUpInside];
     [cell.cellContentView addSubview:button];
+  
     return cell;
 }
-#pragma mark WKPagesCollectionViewDataSource
-///追加数据
--(void)willAppendItemInCollectionView:(WKPagesCollectionView *)collectionView{
-    [_array addObject:@"new button"];
+
+#pragma mark - WKPagesCollectionViewDataSource
+
+- (void)willAppendItemInCollectionView:(WKPagesCollectionView *)collectionView
+{
+    [self.items addObject:@"new button"];
 }
-///删除数据
--(void)collectionView:(WKPagesCollectionView *)collectionView willRemoveCellAtIndexPath:(NSIndexPath *)indexPath{
-    [_array removeObjectAtIndex:indexPath.row];
+
+- (void)collectionView:(WKPagesCollectionView *)collectionView willRemoveCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.items removeObjectAtIndex:indexPath.row];
 }
+
 @end
