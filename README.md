@@ -18,5 +18,7 @@ Features:
 ### Manually
 Add `WKPagesCollectionView` folder and the following files inside it to project :`WK.h`, `WKPagesCollectionView.h`, `WKPagesCollectionView.m`, `WKPagesCollectionViewCell.h`, `WKPagesCollectionViewCell.m`, `WKPagesCollectionViewFlowLayout.h`, `WKPagesCollectionViewFlowLayout.m`;
 
-### LICENSE
-???
+## License
+
+WKPagesCollectionView is licensed under the terms of the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html). Please see the [LICENSE](/LICENSE.txt) file for full details.
+
