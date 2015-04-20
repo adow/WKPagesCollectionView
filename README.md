@@ -11,9 +11,7 @@ I wanted to implement an UI effect like iOS7 Safari tabs pages.
 
 ![Effect video](http://farm4.staticflickr.com/3829/11171831814_9c5972bbe6_z.jpg)]
 
-
-
-##Usage
+## Usage
 * Add `WKPagesCollectionView` folder and the following files inside it to project :`WK.h`, `WKPagesCollectionView.h`, `WKPagesCollectionView.m`, `WKPagesCollectionViewCell.h`, `WKPagesCollectionViewCell.m`, `WKPagesCollectionViewFlowLayout.h`, `WKPagesCollectionViewFlowLayout.m`;
 * Import `WKPagesCollectionView`;
 * Prepare data
@@ -222,15 +220,15 @@ Here is add page method in `WKPagesCollectionView`:
 		-(void)appendItem{
 		    if (self.isHighLight){
 		        [self dismissFromHightLightWithCompletion:^(BOOL finished) {
-		            [self _addNewPage];
+		            [self addNewPage];
 		        }];
 		    }
 		    else{
-		        [self _addNewPage];
+		        [self addNewPage];
 		    }
 		}
 		///Add a new page
-		-(void)_addNewPage{
+		-(void)addNewPage{
 		    int total=[self numberOfItemsInSection:0];
 		    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
 		    double delayInSeconds = 0.3f;

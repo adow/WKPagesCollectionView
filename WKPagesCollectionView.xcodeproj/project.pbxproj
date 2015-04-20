@@ -87,6 +87,7 @@
 		68D7C1C618347A08006B418C = {
 			isa = PBXGroup;
 			children = (
+				68A1CF26184CD0DB00346DF8 /* README.md */,
 				68D7C1D818347A08006B418C /* WKPagesCollectionView */,
 				68D7C1D118347A08006B418C /* Frameworks */,
 				68D7C1D018347A08006B418C /* Products */,
@@ -116,7 +117,6 @@
 		68D7C1D818347A08006B418C /* WKPagesCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				68A1CF26184CD0DB00346DF8 /* README.md */,
 				68D7C1E118347A08006B418C /* AppDelegate.h */,
 				68D7C1E218347A08006B418C /* AppDelegate.m */,
 				68D7C1E418347A08006B418C /* Main.storyboard */,

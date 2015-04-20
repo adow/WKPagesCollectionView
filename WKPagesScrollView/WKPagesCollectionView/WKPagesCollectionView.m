@@ -10,9 +10,31 @@
 
 CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 
-@implementation WKPagesCollectionView
-@dynamic maskShow;
+@interface WKPagesCollectionView ()
 
+@property (nonatomic, strong) UIImageView *maskImageView;
+
+@end
+
+@implementation WKPagesCollectionView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    WKPagesCollectionViewFlowLayout *flowLayout=[[WKPagesCollectionViewFlowLayout alloc ] init];
+    flowLayout.itemSize = [UIScreen mainScreen].bounds.size;
+    
+    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y-self.topOffScreenMargin,
+                                  frame.size.width, frame.size.height + self.topOffScreenMargin);
+    
+    self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
+    if (self) {
+        self.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+        self.highLightAnimationDuration = 0.3;
+        self.dismisalAnimationDuration = 0.3;
+    }
+    
+    return self;
+}
 
 - (CGFloat)topOffScreenMargin
 {
@@ -21,48 +43,40 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     }
     return _topOffScreenMargin;
 }
--(id)initWithFrame:(CGRect)frame{
-    WKPagesCollectionViewFlowLayout* flowLayout=[[WKPagesCollectionViewFlowLayout alloc ] init];
-    CGRect realFrame = CGRectMake(frame.origin.x, frame.origin.y-self.topOffScreenMargin,
-                                  frame.size.width, frame.size.height + self.topOffScreenMargin);
-    self = [super initWithFrame:realFrame collectionViewLayout:flowLayout];
-    if (self){
-        self.contentInset=UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
-        self.highLightAnimationDuration=0.3f;
-        self.dismisalAnimationDuration=0.3f;
-    }
-    return self;
-}
--(void)setHidden:(BOOL)hidden{
+
+- (void)setHidden:(BOOL)hidden
+{
     [super setHidden:hidden];
+
     if (hidden){
-        if (_maskImageView){
+        if (_maskImageView) {
             [_maskImageView removeFromSuperview];
-            _maskImageView=nil;
+            _maskImageView = nil;
         }
     }
-    else{
-        [self setMaskShow:_maskShow];
+    else {
+        [self setMaskShow:self.maskShow];
     }
 }
-#pragma mark - Mask
--(void)setMaskShow:(BOOL)maskShow{
-    _maskShow=maskShow;
+
+- (void)setMaskShow:(BOOL)maskShow
+{
+    _maskShow = maskShow;
+    
     if (maskShow){
         if (!_maskImageView){
-            _maskImageView=[[UIImageView alloc]initWithImage:[self makeGradientImage]];
+            _maskImageView = [[UIImageView alloc]initWithImage:[self makeGradientImage]];
             [self.superview addSubview:_maskImageView];
         }
-        _maskImageView.hidden=NO;
-    }
-    else{
-        _maskImageView.hidden=YES;
+        _maskImageView.hidden = NO;
+        
+    } else {
+        _maskImageView.hidden = YES;
     }
 }
--(BOOL)maskShow{
-    return _maskShow;
-}
--(UIImage*)makeGradientImage{
+
+- (UIImage *)makeGradientImage
+{
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 1.0f);
     CGContextRef context=UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -93,9 +107,11 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     UIGraphicsEndImageContext();
     return image;
 }
+
 #pragma mark - Actions
-///Display status
--(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
+
+- (void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion
+{
     NSLog(@"row:%ld",(long)indexPath.row);
     
     if (indexPath.row >= [self numberOfItemsInSection:indexPath.section]){
@@ -105,17 +121,18 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     if (_isHighLight){
         return;
     }
-    ///如果在可视范围内就不要滚动了
-    BOOL no_scroll=NO;
+
+    BOOL noScroll = NO;
     NSArray* visibleIndexPaths=[self indexPathsForVisibleItems];
     for (NSIndexPath* indexPath in visibleIndexPaths) {
         if (indexPath.row==indexPath.row){
-            no_scroll=YES;
+            noScroll = YES;
         }
     }
-    if (!no_scroll){
+    if (!noScroll){
         [self scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
     }
+    
     double delayInSeconds = 0.3f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -127,32 +144,37 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
             [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
                 NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
                 if (visibleIndexPath.row==indexPath.row){
-                    cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
-                }
-                else if (visibleIndexPath.row<indexPath.row){
-                    cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
-                }
-                else if (visibleIndexPath.row>indexPath.row){
+                    cell.state=WKPagesCollectionViewCellStateHightlight;
+                    
+                } else if (visibleIndexPath.row<indexPath.row) {
+                    cell.state=WKPagesCollectionViewCellStateBackToTop;
+                    
+                } else if (visibleIndexPath.row>indexPath.row) {
                     NSLog(@"indexPath:%ld,visibleIndexPath:%ld",(long)indexPath.row,(long)visibleIndexPath.row);
-                    cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
-                }
-                else{
-                    cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+                    cell.state=WKPagesCollectionViewCellStateBackToBottom;
+                    
+                } else {
+                    cell.state = WKPagesCollectionViewCellStateNormal;
                 }
                 _maskImageView.alpha = 0.0;
             }];
+            
         } completion:^(BOOL finished) {
             _isHighLight = YES;
             self.maskShow = NO;
-            completion(finished);
+            if (completion) {
+                completion(finished);
+            }
+
             if ([self.delegate respondsToSelector:@selector(collectionView:didShownToHightlightAtIndexPath:)]){
                 [(id<WKPagesCollectionViewDelegate>)self.delegate collectionView:self didShownToHightlightAtIndexPath:indexPath];
             }
         }];
     });
-    
 }
--(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath{
+
+- (void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.row >= [self numberOfItemsInSection:indexPath.section]) {
         return;
     }
@@ -164,67 +186,76 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     double delayInSeconds = 0.01f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.maskShow=NO;
-        self.scrollEnabled=NO;
+        self.maskShow = NO;
+        self.scrollEnabled = NO;
         [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-            NSIndexPath* visibleIndexPath=[self indexPathForCell:cell];
-            if (visibleIndexPath.row==indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateHightlight;
+            NSIndexPath* visibleIndexPath = [self indexPathForCell:cell];
+            if (visibleIndexPath.row == indexPath.row){
+                cell.state = WKPagesCollectionViewCellStateHightlight;
             }
             else if (visibleIndexPath.row<indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
+                cell.state = WKPagesCollectionViewCellStateBackToTop;
             }
             else if (visibleIndexPath.row>indexPath.row){
-                cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
+                cell.state = WKPagesCollectionViewCellStateBackToBottom;
             }
             else{
-                cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+                cell.state = WKPagesCollectionViewCellStateNormal;
             }
         }];
         _isHighLight=YES;
     });
     
 }
-///Back to the original state
--(void)dismissFromHightLightWithCompletion:(void (^)(BOOL))completion{
-    self.maskShow=YES;
+
+- (void)dismissFromHightLightWithCompletion:(void (^)(BOOL))completion
+{
+    self.maskShow = YES;
     _maskImageView.alpha = 0.0;
+
     if (!_isHighLight)
         return;
-    [UIView animateWithDuration:self.dismisalAnimationDuration delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-            cell.showingState=WKPagesCollectionViewCellShowingStateNormal;
+    
+    [UIView animateWithDuration:self.dismisalAnimationDuration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self.visibleCells enumerateObjectsUsingBlock:^(WKPagesCollectionViewCell *cell, NSUInteger idx, BOOL *stop) {
+            cell.state = WKPagesCollectionViewCellStateNormal;
             _maskImageView.alpha = 1.0;
         }];
+        
     } completion:^(BOOL finished) {
-        self.scrollEnabled=YES;
-        _isHighLight=NO;
+        self.scrollEnabled = YES;
+        _isHighLight = NO;
+        
         if (completion != nil) {
             completion(finished);
         }
+        
         if ([self.delegate respondsToSelector:@selector(didDismissFromHightlightOnCollectionView:)]){
             [(id<WKPagesCollectionViewDelegate>)self.delegate didDismissFromHightlightOnCollectionView:self];
         }
     }];
 }
-///Append a page
--(void)appendItem{
+
+- (void)appendItem
+{
     if (self.isAddingNewPage) {
         return;
     }
+    
     self.isAddingNewPage = YES;
     if (self.isHighLight){
         [self dismissFromHightLightWithCompletion:^(BOOL finished) {
-            [self _addNewPage];
+            [self addNewPage];
         }];
     }
     else{
-        [self _addNewPage];
+        [self addNewPage];
     }
 }
-///Adding a
--(void)_addNewPage{
-    NSInteger total=[self numberOfItemsInSection:0];
+
+- (void)addNewPage
+{
+    NSInteger total = [self numberOfItemsInSection:0];
     if (total > 0) {
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:total-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
     }
@@ -234,8 +265,8 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         ///Add Data
         [(id<WKPagesCollectionViewDataSource>)self.dataSource willAppendItemInCollectionView:self];
-        NSInteger lastRow=total;
-        NSIndexPath* insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
+        NSInteger lastRow = total;
+        NSIndexPath *insertIndexPath=[NSIndexPath indexPathForItem:lastRow inSection:0];
         [self performBatchUpdates:^{
             [self insertItemsAtIndexPaths:@[insertIndexPath]];
         } completion:^(BOOL finished) {
@@ -250,22 +281,22 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
         }];
     });
 }
-#pragma mark - UIView and UICollectionView
--(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView* view=[super hitTest:point withEvent:event];
+
+#pragma mark -
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *view = [super hitTest:point withEvent:event];
     if (!view){
         return nil;
     }
-    if (view==self){
-        for (WKPagesCollectionViewCell* cell in self.visibleCells) {
-            if (cell.showingState==WKPagesCollectionViewCellShowingStateHightlight){
+    if (view == self){
+        for (WKPagesCollectionViewCell *cell in self.visibleCells) {
+            if (cell.state == WKPagesCollectionViewCellStateHightlight){
                 return cell.cellContentView;///Events should only be passed to this layer
             }
         }
     }
     return view;
-//    UIView* view=[super hitTest:point withEvent:event];
-//    NSLog(@"%@,%d",NSStringFromClass([view class]),view.tag);
-//    return view;
 }
+
 @end

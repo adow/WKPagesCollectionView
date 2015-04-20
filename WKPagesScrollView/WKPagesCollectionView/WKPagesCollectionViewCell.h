@@ -8,27 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "WKCloseButton.h"
-typedef enum WKPagesCollectionViewCellShowingState:NSUInteger{
-    WKPagesCollectionViewCellShowingStateNormal=0,
-    WKPagesCollectionViewCellShowingStateHightlight=1,
-    WKPagesCollectionViewCellShowingStateBackToTop=2,
-    WKPagesCollectionViewCellShowingStateBackToBottom=3,
-} WKPagesCollectionViewCellShowingState;
-@interface WKPagesCollectionViewCell : UICollectionViewCell<UIScrollViewDelegate>{
-    WKPagesCollectionViewCellShowingState _showingState;
-    UITapGestureRecognizer* _tapGesture;
-    UIScrollView* _scrollView;
-    WKCloseButton* _closeButton;
-//    UIImageView* _maskImageView;
-}
-///Position the normal state
-@property (nonatomic,assign) CATransform3D normalTransform;
-///Position the normal state
-@property (nonatomic,assign) CGRect normalFrame;
-///Display status
-@property (nonatomic,assign) WKPagesCollectionViewCellShowingState showingState;
-///Quote collectionView
-@property (nonatomic,weak) UICollectionView* collectionView;
-@property (nonatomic,strong) UIView* cellContentView;
--(UIImage*)makeGradientImage;
+
+typedef NS_ENUM(NSUInteger, WKPagesCollectionViewCellState) {
+    WKPagesCollectionViewCellStateNormal,
+    WKPagesCollectionViewCellStateHightlight,
+    WKPagesCollectionViewCellStateBackToTop,
+    WKPagesCollectionViewCellStateBackToBottom,
+};
+
+@interface WKPagesCollectionViewCell : UICollectionViewCell <UIScrollViewDelegate>
+
+@property (nonatomic, assign) CATransform3D normalTransform;
+@property (nonatomic, assign) CGRect normalFrame;
+@property (nonatomic, assign) WKPagesCollectionViewCellState state;
+@property (nonatomic, assign) UICollectionView *collectionView; // cell should not need a reference to the collection view (its parent)
+@property (nonatomic, strong) UIView *cellContentView;
+
 @end

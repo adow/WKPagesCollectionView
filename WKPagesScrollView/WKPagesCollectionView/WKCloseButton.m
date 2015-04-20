@@ -8,20 +8,19 @@
 
 #import "WKCloseButton.h"
 #import <QuartzCore/QuartzCore.h>
+
 @implementation WKCloseButton
 
-
--(id) initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self){
         [self drawCloseButton];
     }
     return self;
-
 }
-#pragma mark - DrawButton
--(void) drawCloseButton
+
+- (void)drawCloseButton
 {
     self.backgroundColor = [UIColor clearColor];
     CGFloat xOffset = 12;
